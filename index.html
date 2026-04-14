@@ -210,10 +210,9 @@
     </div>
 
     <div class="consent-wrap">
-      <input type="checkbox" id="f-consent" onchange="clearErr(this.parentElement)">
-      <label for="f-consent" class="consent-text">I agree to let EFL publish my name, batch, photo, and message (if provided) on the official website's Supporter Wall. <span>*</span></label>
+      <input type="checkbox" id="f-consent" checked>
+      <label for="f-consent" class="consent-text">I agree to let EFL publish my name, batch, photo, and message (if provided) on the official website's Supporter Wall. (Optional)</label>
     </div>
-    <span class="error-text" id="consent-err" style="margin-top: -1.5rem; margin-bottom: 1.5rem; display: block;">You must agree to publish your details to proceed.</span>
 
     <button class="submit-btn" id="submitBtn" onclick="submitDonation()">
       <span class="loader" id="btn-loader"></span>
@@ -307,7 +306,6 @@ function clearErr(el) {
   if(el.nextElementSibling && el.nextElementSibling.classList.contains('error-text')) {
     el.nextElementSibling.style.display = 'none';
   }
-  document.getElementById('consent-err').style.display = 'none';
   document.getElementById('photo-err').style.display = 'none';
   document.getElementById('photo-box').classList.remove('input-error');
 }
@@ -351,7 +349,6 @@ async function submitDonation() {
   if(!phone) { document.getElementById('f-phone').classList.add('input-error'); document.getElementById('f-phone').nextElementSibling.style.display='block'; hasErr=true; }
   if(!trx) { document.getElementById('f-trx').classList.add('input-error'); document.getElementById('f-trx').nextElementSibling.style.display='block'; hasErr=true; }
   if(!photoFile) { document.getElementById('photo-box').classList.add('input-error'); document.getElementById('photo-err').style.display='block'; hasErr=true; }
-  if(!consent) { document.getElementById('consent-err').style.display='block'; hasErr=true; }
 
   if(hasErr) return;
 
