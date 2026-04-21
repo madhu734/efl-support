@@ -3,2416 +3,584 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EFL Season 4 — Jahangirnagar University · Dept. of English</title>
+<title>Support EFL Season 4 — JU Dept. of English</title>
 <link rel="icon" type="image/png" href="https://i.postimg.cc/j5DTGgSg/EFL.png">
-<!-- Modern, Premium Font Pairing: Montserrat for headings, Inter for body -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
-<!-- HTML2Canvas for Exporting Cards -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<!-- HLS.js for Live Streaming -->
-<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  
-  /* LIGHT MODE VARIABLES (DEFAULT) */
   :root {
-    --brand: #111827;        
-    --brand-light: #374151;  
-    --bg-body: #F3F4F6;      
+    --brand: #0f172a;        
+    --brand-light: #1e293b;  
+    --gold: #F59E0B;
+    --gold-light: #FDE68A;
+    --bg-body: #F8FAFC;      
     --bg-card: #FFFFFF;      
-    --bg-input: #F9FAFB;     
-    --text-main: #111827;    
-    --text-muted: #6B7280;   
-    --border: #E5E7EB;       
-    --accent: #E63946;       
-    --glass-bg: rgba(255, 255, 255, 0.85);
-  }
-
-  /* DARK MODE VARIABLES */
-  [data-theme="dark"] {
-    --brand: #F9FAFB;        
-    --brand-light: #E5E7EB;  
-    --bg-body: #0F172A;      
-    --bg-card: #1E293B;      
-    --bg-input: #334155;     
-    --text-main: #F9FAFB;    
-    --text-muted: #94A3B8;   
-    --border: #334155;       
-    --accent: #F87171;       
-    --glass-bg: rgba(30, 41, 59, 0.85);
+    --text-main: #0f172a;    
+    --text-muted: #64748b;   
+    --border: #E2E8F0;       
+    --accent: #EF4444;       
   }
   
-  body { font-family: 'Inter', sans-serif; background: var(--bg-body); color: var(--text-main); min-height: 100vh; overflow-x: hidden; transition: background-color 0.3s, color 0.3s; }
+  body { font-family: 'Inter', sans-serif; background: var(--bg-body); color: var(--text-main); min-height: 100vh; overflow-x: hidden; }
   
-  /* GLASSMORPHISM NAVBAR */
-  nav { 
-    background: var(--glass-bg); 
-    backdrop-filter: blur(12px); 
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border); 
-    padding: 0 2rem; 
-    position: sticky; 
-    top: 0; 
-    z-index: 100; 
-    display: flex; 
-    align-items: center; 
-    justify-content: space-between; 
-    min-height: 70px; 
-    box-shadow: 0 4px 20px rgba(0,0,0,0.05); 
-    transition: background-color 0.3s, border-color 0.3s;
-    flex-wrap: wrap;
-  }
-  .nav-logo { display: flex; align-items: center; gap: 10px; cursor: pointer; padding: 10px 0;}
-  .logo-img { height: 50px; width: auto; object-fit: contain; }
-  .nav-title { font-family: 'Montserrat', sans-serif; font-weight: 800; text-transform: uppercase; font-size: 20px; letter-spacing: 1px; color: var(--brand); line-height: 1.1; }
-  .nav-sub { font-size: 10px; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; margin-top: 2px; font-weight: 600; }
-  
-  .nav-links { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; padding: 10px 0;}
-  .nav-btn { background: var(--bg-card); border: 1px solid var(--border); color: var(--text-muted); font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600; padding: 6px 12px; border-radius: 6px; cursor: pointer; letter-spacing: 0.5px; transition: all .2s; white-space: nowrap; display: flex; align-items: center; gap: 6px; }
-  .nav-btn:hover, .nav-btn.active { color: var(--brand); background: var(--bg-body); border-color: var(--brand); }
-  
-  .nav-actions { display: flex; align-items: center; gap: 10px; padding: 10px 0;}
-  .nav-cta { background: #E63946; color: #fff; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 700; padding: 8px 16px; border-radius: 6px; cursor: pointer; border: none; letter-spacing: 1px; text-transform: uppercase; transition: all .2s; }
-  .nav-cta:hover { background: #d90429; box-shadow: 0 4px 12px rgba(230, 57, 70, 0.3); }
-  
-  .theme-toggle-btn { background: var(--bg-input); border: 1px solid var(--border); color: var(--text-main); font-size: 16px; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
-  .theme-toggle-btn:hover { background: var(--border); transform: rotate(15deg); }
+  /* HEADER */
+  header { background: var(--brand); padding: 1.5rem 2rem; display: flex; justify-content: center; align-items: center; border-bottom: 4px solid var(--gold); }
+  .logo-area { display: flex; align-items: center; gap: 12px; }
+  .logo-img { height: 40px; width: auto; }
+  .logo-text { font-family: 'Montserrat', sans-serif; font-weight: 900; color: #fff; text-transform: uppercase; letter-spacing: 1px; line-height: 1.1; }
+  .logo-sub { font-size: 10px; color: var(--gold-light); letter-spacing: 2px; }
 
-  .page { display: none; min-height: calc(100vh - 70px); }
-  .page.active { display: block; animation: fadeIn 0.3s ease-in-out; }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  /* HERO */
+  .hero { background: var(--brand); color: white; padding: 4rem 1.5rem 5rem; text-align: center; position: relative; }
+  .hero::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 50px; background: linear-gradient(to bottom right, transparent 49%, var(--bg-body) 50%); }
+  .hero-title { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(32px, 6vw, 48px); margin-bottom: 1rem; color: #fff; text-transform: uppercase; letter-spacing: 1px; }
+  .hero-title span { color: var(--gold); }
+  .hero-desc { font-size: 15px; color: #cbd5e1; max-width: 600px; margin: 0 auto; line-height: 1.6; font-weight: 500; }
 
-  /* SCROLL ANIMATION CLASSES */
-  .animate-on-scroll { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
-  .animate-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
+  /* FORM WRAPPER */
+  .form-wrap { max-width: 700px; margin: -2rem auto 4rem; position: relative; z-index: 10; padding: 0 1rem; }
+  .form-card { background: var(--bg-card); border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.08); padding: 2.5rem; border: 1px solid var(--border); }
+  
+  .section-title { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 18px; color: var(--brand); margin-bottom: 1.5rem; text-transform: uppercase; display: flex; align-items: center; gap: 10px; }
+  .section-title::before { content: ''; display: inline-block; width: 8px; height: 24px; background: var(--gold); border-radius: 4px; }
 
-  /* HERO SECTION */
-  .hero { background: var(--bg-card); padding: 5rem 2rem 4rem; text-align: center; position: relative; overflow: hidden; border-bottom: 1px solid var(--border); transition: background-color 0.3s; }
-  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 100%, rgba(99, 102, 241, 0.05), transparent 70%); pointer-events: none; }
-  .hero-season { font-size: 11px; letter-spacing: 4px; color: var(--text-muted); text-transform: uppercase; margin-bottom: 1rem; font-weight: 700; position: relative; z-index: 1; }
-  .hero-title { font-family: 'Montserrat', sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(48px, 8vw, 84px); letter-spacing: 2px; line-height: 1.1; margin-bottom: 1.5rem; background: linear-gradient(180deg, var(--brand) 40%, var(--text-muted)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; position: relative; z-index: 1; }
-  .hero-sub { font-size: 16px; color: var(--text-muted); max-width: 480px; margin: 0 auto 2.5rem; line-height: 1.6; position: relative; z-index: 1; }
-  .hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 10; }
-  
-  .btn-primary { background: var(--brand); color: var(--bg-card); font-weight: 700; font-size: 13px; padding: 12px 28px; border-radius: 8px; cursor: pointer; border: none; letter-spacing: 1px; text-transform: uppercase; transition: all .2s; font-family: 'Inter', sans-serif; }
-  .btn-primary:hover { background: var(--brand-light); transform: translateY(-2px); box-shadow: 0 8px 16px rgba(0,0,0,0.15); }
-  .btn-outline { background: none; color: var(--brand); font-weight: 700; font-size: 13px; padding: 11px 24px; border-radius: 8px; cursor: pointer; border: 1.5px solid var(--border); letter-spacing: 1px; text-transform: uppercase; transition: all .2s; font-family: 'Inter', sans-serif; }
-  .btn-outline:hover { border-color: var(--brand); background: var(--bg-input); }
-  .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(230,57,70,0.1); border: 1px solid rgba(230,57,70,0.2); padding: 6px 14px; border-radius: 20px; font-size: 12px; color: var(--accent); font-weight: 600; margin-bottom: 2rem; letter-spacing: 0.5px; }
-  .pulse { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; animation: pulse 1.5s infinite; display: inline-block; }
-  @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .5; transform: scale(1.3); } }
-  
-  /* STATS & SECTIONS */
-  .stats-bar { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--border); background: var(--bg-card); transition: background-color 0.3s;}
-  .stat-item { padding: 1.5rem; text-align: center; border-right: 1px solid var(--border); }
-  .stat-item:last-child { border-right: none; }
-  .stat-num { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 32px; color: var(--brand); letter-spacing: 1px; }
-  .stat-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; font-weight: 700; }
-  .section { padding: 3.5rem 2rem; max-width: 1100px; margin: 0 auto; }
-  .section-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; }
-  .section-title { font-family: 'Montserrat', sans-serif; font-weight: 800; text-transform: uppercase; font-size: 28px; letter-spacing: 1px; color: var(--text-main); }
-  .section-line { flex: 1; height: 1px; background: var(--border); }
-  .section-tag { font-size: 11px; color: var(--text-muted); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
-  
-  .crest-img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block; }
-
-  /* TEAMS & PLAYERS GRID */
-  .teams-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
-  .team-card { background: var(--bg-card); border: 1.5px solid var(--text-muted); border-radius: 12px; overflow: hidden; transition: all .3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.04); }
-  .team-card:hover { transform: translateY(-6px); box-shadow: 0 16px 32px rgba(0,0,0,0.12); border-color: var(--brand); }
-  .team-banner { height: 80px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; background-size: cover !important; background-position: center !important;}
-  .team-crest { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 14px; color: #fff; border: 2px solid rgba(255,255,255,0.3); text-transform: uppercase; overflow: hidden; text-align: center; line-height: 1.1; }
-  .team-info { padding: 1rem 1.25rem; }
-  .team-name { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 18px; letter-spacing: 0.5px; margin-bottom: 4px; text-transform: uppercase; color: var(--text-main); }
-  .team-meta { font-size: 12px; color: var(--text-muted); display: flex; gap: 12px; font-weight: 500; }
-  .team-badge { font-size: 11px; padding: 4px 10px; border-radius: 20px; font-weight: 600; letter-spacing: 0.5px; display: inline-block; margin-top: 8px; }
-  .team-roster { padding: 0.75rem 1.25rem; border-top: 1px solid var(--border); display: flex; gap: 8px; flex-wrap: wrap; background: var(--bg-input); }
-  .roster-tag { font-size: 11px; background: var(--border); padding: 4px 10px; border-radius: 4px; color: var(--text-muted); font-weight: 500; }
-  .tbd { color: var(--text-muted); font-style: italic; }
-
-  /* FORMS & REGISTRATION */
-  .reg-wrap { max-width: 680px; margin: 0 auto; padding: 2.5rem 2rem; }
-  .reg-header { text-align: center; margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
-  .reg-title { font-family: 'Montserrat', sans-serif; font-weight: 800; text-transform: uppercase; font-size: 32px; letter-spacing: 1px; margin-bottom: 8px; color: var(--text-main); }
-  .reg-form { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; display: flex; flex-direction: column; gap: 20px; box-shadow: 0 4px 16px rgba(0,0,0,0.03); }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  
-  .form-group { display: flex; flex-direction: column; position: relative; margin-bottom: 6px; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 2rem; }
+  .form-group { display: flex; flex-direction: column; gap: 8px; position: relative; }
   .form-group.full { grid-column: 1 / -1; }
   
-  .form-group label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); font-weight: 700; margin-bottom: 8px; display: block; }
-  .form-group label span { color: var(--accent); }
+  label { font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+  label span { color: var(--accent); }
+  input[type="text"], input[type="tel"], textarea, select { width: 100%; padding: 14px; border: 1px solid var(--border); border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; color: var(--text-main); background: #f8fafc; transition: 0.2s; outline: none; }
+  input:focus, textarea:focus, select:focus { border-color: var(--brand); background: #fff; box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.05); }
+  textarea { min-height: 100px; resize: vertical; }
   
-  input, select, textarea { background: var(--bg-input); border: 1.5px solid var(--border); color: var(--text-main); font-family: 'Inter', sans-serif; font-size: 14px; padding: 14px 16px; border-radius: 10px; outline: none; transition: all .3s ease; width: 100%; font-weight: 500; box-shadow: inset 0 2px 4px rgba(0,0,0,0.01); }
-  input:focus, select:focus, textarea:focus { border-color: #6366f1; background: var(--bg-card); box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1); }
-  input::placeholder, textarea::placeholder { color: var(--text-muted); font-weight: 400; opacity: 0.7; }
-  textarea { resize: vertical; min-height: 100px; }
+  .input-error { border-color: var(--accent) !important; background: #FEF2F2 !important; }
+  .error-text { color: var(--accent); font-size: 11px; font-weight: 600; display: none; }
   
-  .input-error { border-color: var(--accent) !important; background: rgba(230,57,70,0.02) !important; animation: shake 0.4s ease-in-out; }
-  .error-msg { color: var(--accent); font-size: 11px; font-weight: 600; margin-top: 6px; display: none; letter-spacing: 0.5px; }
-  .input-error + .error-msg { display: block; }
-  .form-error-summary { background: rgba(230,57,70,0.05); border: 1px solid rgba(230,57,70,0.2); color: var(--accent); padding: 12px; border-radius: 8px; font-size: 13px; font-weight: 600; text-align: center; display: none; margin-bottom: 10px; }
-  @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-4px); } 75% { transform: translateX(4px); } }
+  /* PHOTO UPLOAD */
+  .photo-upload-box { border: 2px dashed var(--border); border-radius: 12px; padding: 2rem; text-align: center; cursor: pointer; transition: 0.2s; background: #f8fafc; }
+  .photo-upload-box:hover { border-color: var(--gold); background: var(--gold-light); opacity: 0.8; }
+  .upload-icon { font-size: 32px; margin-bottom: 8px; display: block; }
+  .upload-text { font-weight: 700; font-size: 14px; color: var(--brand); }
+  .upload-sub { font-size: 11px; color: var(--text-muted); margin-top: 4px; font-weight: 500; }
 
-  .photo-upload { border: 2px dashed var(--border); border-radius: 12px; padding: 2.5rem 2rem; text-align: center; cursor: pointer; transition: all .3s ease; background: var(--bg-input); }
-  .photo-upload:hover { border-color: #6366f1; background: var(--bg-card); transform: translateY(-2px); box-shadow: 0 8px 16px rgba(0,0,0,0.04); }
-  .photo-upload.input-error { border-color: var(--accent) !important; background: rgba(230,57,70,0.02) !important; }
-  .photo-icon { font-size: 32px; margin-bottom: 12px; display: block; }
-  .photo-text { font-size: 14px; color: var(--text-main); font-weight: 600; }
-  .photo-sub { font-size: 11px; color: var(--text-muted); margin-top: 6px; font-weight: 500; line-height: 1.5; }
+  /* JERSEY SUPPORT BOX */
+  .jersey-toggle-box { background: rgba(15, 23, 42, 0.03); border: 2px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 2rem; transition: all 0.3s; cursor: pointer; display: flex; align-items: flex-start; gap: 16px; }
+  .jersey-toggle-box:hover { border-color: var(--brand); }
+  .jersey-toggle-box.active { background: rgba(15, 23, 42, 0.05); border-color: var(--brand); }
+  .jersey-checkbox { width: 24px; height: 24px; accent-color: var(--brand); cursor: pointer; margin-top: 2px; }
+  .jersey-text-wrap { flex: 1; }
+  .jersey-title { font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 800; color: var(--brand); margin-bottom: 4px; }
+  .jersey-desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; font-weight: 500; }
   
-  /* PAYMENTS */
-  .payment-box { background: var(--bg-input); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; }
-  .payment-title { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); font-weight: 700; margin-bottom: 12px; }
-  .pay-opt { flex: 1; min-width: 120px; background: var(--bg-card); border: 1.5px solid var(--border); border-radius: 10px; padding: 14px; text-align: center; cursor: pointer; transition: all .2s; font-size: 13px; font-weight: 600; }
-  .pay-opt:hover { border-color: var(--text-muted); }
-  .pay-opt.selected { border-color: var(--brand); background: var(--bg-body); color: var(--brand); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-  .pay-amount { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 20px; color: var(--brand); letter-spacing: 1px; display: block; margin-top: 6px; transition: color 0.3s ease; }
-  .pay-number-row { display: flex; align-items: center; gap: 10px; margin-top: 12px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; }
-  .pay-number-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); font-weight: 700; white-space: nowrap; }
-  .pay-number-val { font-size: 15px; font-weight: 700; color: var(--brand); letter-spacing: 1px; }
-
-  .submit-btn { background: var(--brand); color: var(--bg-card); font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 700; padding: 16px; border-radius: 10px; cursor: pointer; border: none; letter-spacing: 1px; text-transform: uppercase; transition: all .3s cubic-bezier(0.4, 0, 0.2, 1); width: 100%; margin-top: 8px; }
-  .submit-btn:hover { background: var(--brand-light); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
-  .submit-btn:disabled { opacity: 0.7; cursor: not-allowed; transform: none !important; box-shadow: none !important; }
+  .jersey-details-panel { display: none; background: #fff; border: 1px solid var(--border); border-top: none; border-radius: 0 0 12px 12px; padding: 20px; margin-top: -24px; margin-bottom: 2rem; position: relative; z-index: 1; }
   
-  .success-box { background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 12px; padding: 4rem 2rem; text-align: center; display: none; box-shadow: 0 4px 16px rgba(0,0,0,0.03); }
-  .success-icon { font-size: 48px; margin-bottom: 16px; display: block; }
-  .success-title { font-family: 'Montserrat', sans-serif; font-weight: 800; text-transform: uppercase; font-size: 28px; letter-spacing: 1px; color: #15803D; margin-bottom: 12px; }
+  /* CUSTOM SELECT FOR TEAMS */
+  .team-option { display: flex; align-items: center; gap: 10px; }
+  .team-option img { width: 24px; height: 24px; border-radius: 50%; object-fit: cover; }
 
-  /* FIXTURE CARDS STYLES */
-  .fixture-list { display: flex; flex-direction: column; gap: 16px; margin-top: 20px; }
-  .fixture-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 16px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 10px rgba(0,0,0,0.02); position: relative; }
-  .fixture-card:hover { border-color: var(--brand); box-shadow: 0 12px 24px rgba(0,0,0,0.08); transform: translateY(-4px); }
-  .fixture-header { display: flex; justify-content: space-between; font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
-  .fixture-body { display: flex; align-items: center; justify-content: space-between; }
-  .fixture-team { display: flex; align-items: center; gap: 12px; flex: 1; }
-  .fixture-team.away { flex-direction: row-reverse; text-align: right; }
-  .fixture-crest { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 12px; color: #fff; flex-shrink: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.1); overflow: hidden; text-align: center; line-height: 1.1;}
-  .fixture-tname { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 16px; color: var(--text-main); text-transform: uppercase; }
-  .fixture-center { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 20px; min-width: 120px; }
-  .fixture-score { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 28px; color: var(--brand); letter-spacing: 2px; }
-  .fixture-vs { font-size: 14px; font-weight: 800; color: var(--text-muted); background: var(--bg-input); padding: 6px 12px; border-radius: 20px; }
+  /* PAYMENT SECTION */
+  .payment-methods { display: flex; gap: 12px; margin-bottom: 20px; }
+  .pay-tab { flex: 1; padding: 12px; border: 2px solid var(--border); border-radius: 10px; text-align: center; cursor: pointer; font-weight: 700; font-size: 13px; color: var(--text-muted); transition: 0.2s; }
+  .pay-tab.active { border-color: var(--brand); background: var(--brand); color: #fff; }
   
-  /* LIVE & HIGHLIGHTS BADGES */
-  .live-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); padding: 6px 14px; border-radius: 20px; font-size: 11px; font-weight: 800; cursor: pointer; animation: pulse-live 2s infinite; text-transform: uppercase; margin-top: 12px; transition: all 0.2s;}
-  .live-badge:hover { background: #ef4444; color: white; transform: translateY(-1px); }
-  @keyframes pulse-live { 
-      0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); } 
-      70% { box-shadow: 0 0 0 6px rgba(239, 68, 68, 0); } 
-      100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); } 
-  }
-  .highlight-btn { display: inline-flex; align-items: center; gap: 6px; background: rgba(99, 102, 241, 0.1); color: #6366f1; border: 1px solid rgba(99, 102, 241, 0.3); padding: 6px 12px; border-radius: 8px; font-size: 11px; font-weight: 700; cursor: pointer; transition: all 0.2s; text-transform: uppercase; margin-top: 0; align-self: center; }
-  .highlight-btn:hover { background: #6366f1; color: white; }
+  .pay-details-box { background: #f8fafc; border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 20px; position: relative;}
+  .pay-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px dashed var(--border); }
+  .pay-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .pay-label { font-size: 12px; color: var(--text-muted); font-weight: 600; }
+  .pay-value-wrap { display: flex; align-items: center; gap: 10px; }
+  .pay-value { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 15px; color: var(--brand); }
+  .copy-btn { background: #e2e8f0; border: none; padding: 4px 8px; border-radius: 4px; font-size: 10px; font-weight: 700; cursor: pointer; transition: 0.2s; color: var(--brand); text-transform: uppercase; }
+  .copy-btn:hover { background: var(--gold); color: #fff; }
+  .copy-btn.copied { background: #22C55E; color: #fff; }
 
-  /* RESULTS & STATS ADDITIONS */
-  .result-scorer-list { font-size: 12px; color: var(--text-muted); margin-top: 12px; display: flex; flex-direction: column; gap: 4px; font-weight: 500; }
-  .result-scorer-list.right { text-align: right; }
-  .scorer-item-og { font-style: italic; color: var(--accent); }
-  .top-scorer-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
-  .ts-rank { font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 800; color: var(--border); width: 24px; text-align: center; }
-  .ts-photo { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; background: var(--bg-input); border: 2px solid var(--bg-body); }
-  .ts-info { flex: 1; }
-  .ts-name { font-weight: 700; font-size: 14px; color: var(--text-main); margin-bottom: 2px; }
-  .ts-team { font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; }
-  .ts-goals { font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 900; color: var(--brand); }
+  /* DYNAMIC FEE BADGE */
+  .fee-badge { display: none; background: #FEF2F2; color: #EF4444; border: 1px solid #FCA5A5; padding: 8px 16px; border-radius: 8px; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 14px; align-items: center; justify-content: space-between; margin-bottom: 16px; animation: fadeIn 0.3s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* CONSENT & SUBMIT */
+  .consent-wrap { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 2rem; background: var(--gold-light); padding: 16px; border-radius: 8px; border: 1px solid #FCD34D; }
+  .consent-wrap input[type="checkbox"] { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--brand); cursor: pointer; }
+  .consent-text { font-size: 12px; font-weight: 600; color: var(--brand); line-height: 1.5; cursor: pointer; }
+
+  .submit-btn { width: 100%; background: var(--brand); color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 16px; padding: 16px; border: none; border-radius: 10px; cursor: pointer; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; display: flex; justify-content: center; align-items: center; gap: 10px; }
+  .submit-btn:hover { background: var(--gold); color: var(--brand); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(245, 158, 11, 0.2); }
+  .submit-btn:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
   
-  .export-btn { background: var(--bg-body); border: 1px solid var(--border); padding: 8px 14px; border-radius: 8px; font-size: 11px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: 0.2s; color: var(--text-main); margin-top: 0; align-self: center; }
-  .export-btn:hover { background: var(--brand); color: var(--bg-card); border-color: var(--brand); }
+  /* LOADER */
+  .loader { width: 20px; height: 20px; border: 3px solid rgba(255,255,255,0.3); border-radius: 50%; border-top-color: #fff; animation: spin 1s ease-in-out infinite; display: none; }
+  @keyframes spin { to { transform: rotate(360deg); } }
 
-  /* SUPPORTERS/DONORS STYLES */
-  .supporter-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 20px; margin-top: 1rem; }
-  .supporter-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px 16px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.02); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden; }
-  .supporter-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, #F59E0B, #FBBF24); }
-  .supporter-card:hover { transform: translateY(-6px); border-color: #FBBF24; box-shadow: 0 16px 32px rgba(245, 158, 11, 0.12); }
-  .supporter-photo { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 4px solid var(--bg-input); margin: 0 auto 16px; display: block; }
-  .supporter-name { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 16px; color: var(--text-main); margin-bottom: 4px; }
-  .supporter-batch { font-size: 12px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
-  .supporter-badge { display: inline-flex; align-items: center; gap: 4px; font-size: 10px; font-weight: 800; color: #B45309; background: #FEF3C7; padding: 4px 10px; border-radius: 20px; margin-top: 12px; letter-spacing: 0.5px; text-transform: uppercase; }
-
-  /* STANDINGS (POINTS TABLE) STYLES */
-  .standings-table-container { overflow-x: auto; background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; box-shadow: 0 4px 16px rgba(0,0,0,0.02); }
-  .standings-table { width: 100%; border-collapse: collapse; min-width: 600px; text-align: center; }
-  .standings-table th { padding: 16px 12px; font-size: 11px; font-weight: 800; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; border-bottom: 2px solid var(--border); background: var(--bg-input); }
-  .standings-table th.align-left { text-align: left; }
-  .standings-table td { padding: 14px 12px; font-size: 14px; font-weight: 600; color: var(--text-main); border-bottom: 1px solid var(--border); }
-  .standings-table tr:last-child td { border-bottom: none; }
-  .standings-table tr.top-team td { background: rgba(34, 197, 94, 0.05); }
-  .st-team-cell { display: flex; align-items: center; gap: 12px; text-align: left; }
-  .st-rank { font-family: 'Montserrat', sans-serif; font-weight: 800; color: var(--text-muted); width: 24px; }
-  .st-crest { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 8px; color: #fff; font-weight: 800; font-family: 'Montserrat'; flex-shrink: 0; overflow: hidden; text-align: center; line-height: 1.1;}
-  .st-name { font-family: 'Montserrat', sans-serif; font-weight: 700; text-transform: uppercase; font-size: 13px; }
-  .st-pts { font-family: 'Montserrat', sans-serif; font-weight: 900; color: var(--brand); font-size: 16px; background: rgba(17,24,39,0.05); padding: 4px 12px; border-radius: 6px; }
-
-  /* FORM ICONS STYLES */
-  .form-icon { display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; border-radius: 50%; color: #fff; font-size: 10px; font-weight: 900; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-  .form-w { background-color: #22c55e; }
-  .form-d { background-color: #94a3b8; }
-  .form-l { background-color: #ef4444; }
-
-  /* MODALS & DIRECTORY STYLES */
-  .player-directory-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
-  .player-card { background: var(--bg-card); border: 1.5px solid var(--text-muted); border-radius: 16px; overflow: hidden; text-align: center; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
-  .player-card:hover { border-color: var(--brand); transform: translateY(-6px); box-shadow: 0 16px 32px rgba(0,0,0,0.12); }
-  .player-photo { width: 100%; height: 200px; background: var(--bg-input); object-fit: cover; }
-  .player-info { padding: 16px; }
-  .player-name { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 16px; color: var(--text-main); margin-bottom: 4px; }
-  .player-pos { font-size: 12px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; }
-  .player-team-badge { display: inline-block; margin-top: 10px; font-size: 10px; padding: 4px 10px; border-radius: 20px; font-weight: 700; }
-  
-  /* INSTANT PRESENTATION BUTTON */
-  .instant-present-btn { position: absolute; top: 8px; left: 8px; background: rgba(0,0,0,0.6); color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; width: 32px; height: 32px; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; transition: all 0.2s; font-size: 14px; backdrop-filter: blur(4px); }
-  .instant-present-btn:hover { background: var(--brand); transform: scale(1.1); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
-
-  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(4px); z-index: 1000; display: none; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; padding: 1rem; }
-  .modal-overlay.active { display: flex; opacity: 1; }
-  .modal-content { background: var(--bg-card); width: 100%; max-width: 800px; max-height: 90vh; border-radius: 16px; overflow-y: auto; position: relative; transform: translateY(20px); transition: transform 0.3s; box-shadow: 0 10px 40px rgba(0,0,0,0.3); border: 1px solid var(--border); }
-  .modal-content.sm { max-width: 450px; }
-  .modal-overlay.active .modal-content { transform: translateY(0); }
-  .modal-close { position: absolute; top: 16px; right: 16px; background: rgba(0,0,0,0.5); color: #fff; border: none; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 18px; z-index: 30; transition: background 0.2s; }
-  .modal-close:hover { background: var(--accent); }
-  
-  .team-modal-header { height: 160px; background: linear-gradient(135deg, #1e3a8a, #1e40af); padding: 2rem; position: relative; border-radius: 16px 16px 0 0; }
-  .team-modal-crest { width: 80px; height: 80px; background: #1d4ed8; border-radius: 50%; border: 4px solid var(--bg-card); display: flex; align-items: center; justify-content: center; color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 24px; position: absolute; bottom: -40px; left: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1); overflow: hidden; text-align: center; line-height: 1.1;}
-  .team-modal-body { padding: 3.5rem 2rem 2rem; }
-  .team-modal-name { font-family: 'Montserrat', sans-serif; font-size: 28px; font-weight: 900; color: var(--text-main); text-transform: uppercase; margin-bottom: 4px; line-height: 1.1; }
-  .team-modal-meta { display: flex; gap: 16px; font-size: 13px; color: var(--text-muted); font-weight: 500; margin-bottom: 24px; }
-  
-  /* POCKETBASE UI ADDITIONS */
-  .player-filter-bar { display: flex; gap: 12px; margin-bottom: 20px; align-items: center; background: var(--bg-card); padding: 12px 16px; border-radius: 12px; border: 1px solid var(--border); }
-  .cat-badge { font-size: 10px; padding: 4px 8px; border-radius: 6px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
-  .cat-Icon { background: linear-gradient(135deg, #FFD700, #F59E0B); color: #fff; }
-  .cat-A { background: #3B82F6; color: #fff; }
-  .cat-B { background: #10B981; color: #fff; }
-  .cat-C { background: #8B5CF6; color: #fff; }
-  .cat-GK { background: #0284C7; color: #fff; }
-  .cat-None { background: var(--border); color: var(--text-muted); }
-  
-  .manager-owner-info { display: flex; align-items: center; gap: 8px; }
-  .avatar-sm { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; border: 2px solid var(--bg-card); background: var(--border); }
-
-  .player-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 16px; margin-top: 1rem; }
-  .player-card-sm { border: 1.5px solid var(--text-muted); border-radius: 8px; overflow: hidden; text-align: center; background: var(--bg-input); transition: transform 0.2s; cursor: pointer;}
-  .player-card-sm:hover { transform: translateY(-3px); border-color: var(--brand); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-  .player-photo-sm { width: 100%; height: 160px; background: var(--bg-body); object-fit: cover; display: block; }
-  .player-info-sm { padding: 12px 10px; }
-  .player-name-sm { font-weight: 700; font-size: 13px; color: var(--text-main); margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .player-pos-sm { font-size: 11px; color: var(--text-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
-
-  /* CATEGORY BUTTONS & AUCTION MODE STYLES */
-  .category-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
-  .cat-btn { padding: 8px 16px; border-radius: 20px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text-muted); font-size: 12px; font-weight: 700; cursor: pointer; transition: all 0.2s; text-transform: uppercase; }
-  .cat-btn:hover { border-color: var(--brand); color: var(--text-main); }
-  .cat-btn.active { background: var(--brand); color: var(--bg-card); border-color: var(--brand); }
-  .auction-btn { background: var(--brand); color: var(--bg-card); padding: 8px 16px; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer; border: none; display: flex; align-items: center; gap: 6px; text-transform: uppercase; margin-left: auto; transition: all 0.2s; }
-  .auction-btn:hover { background: var(--brand-light); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-  .auction-controls { display: flex; justify-content: space-between; margin-top: 20px; }
-  .auction-nav-btn { background: var(--bg-input); color: var(--text-main); border: 1px solid var(--border); padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 700; transition: 0.2s; font-family: 'Inter', sans-serif;}
-  .auction-nav-btn:hover:not(:disabled) { background: var(--border); }
-  .auction-nav-btn:disabled { opacity: 0.5; cursor: not-allowed; }
-
-  /* VIDEO PLAYER & TV OVERLAY STYLES */
-  .video-container { width: 100%; max-width: 900px; background: #000; border-radius: 12px; overflow: hidden; aspect-ratio: 16/9; position: relative; margin: 0 auto; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
-  .video-container video { width: 100%; height: 100%; object-fit: contain; border: none; }
-  
-  .tv-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 20; display: none; }
-  .tv-logo { position: absolute; top: 20px; right: 20px; height: 40px; width: auto; opacity: 0.9; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5)); }
-  .tv-scoreboard { position: absolute; top: 25px; left: 30px; display: flex; flex-direction: column; align-items: center; font-family: 'Montserrat', sans-serif; color: #fff; }
-  .sb-wrapper { display: flex; align-items: stretch; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.2); }
-  .sb-team { display: flex; align-items: center; gap: 8px; padding: 6px 12px; transition: background 0.3s; }
-  .sb-team-name { font-weight: 800; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; min-width: 45px; text-align: center; }
-  .sb-crest { width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 8px; font-weight: 800; border: 1px solid rgba(255,255,255,0.4); overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.2); background: rgba(0,0,0,0.15); color: inherit; }
-  .sb-score-box { display: flex; align-items: center; background: rgba(15, 23, 42, 0.95); padding: 0 16px; font-weight: 900; font-size: 18px; letter-spacing: 1px; color: #fff; }
-  .sb-live-badge { background: #ef4444; color: #fff; font-size: 10px; font-weight: 800; padding: 3px 12px; border-radius: 0 0 6px 6px; text-transform: uppercase; letter-spacing: 2px; animation: pulse-live 2s infinite; margin-top: -1px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); }
-  
-  @media(max-width: 600px) {
-      .tv-logo { top: 10px; right: 10px; height: 25px; }
-      .tv-scoreboard { top: 15px; left: 15px; transform: scale(0.85); transform-origin: top left; }
-  }
-
-  .fixtures-wrap, .about-wrap, .results-wrap, .standings-wrap, .supporters-wrap { max-width: 1000px; margin: 0 auto; padding: 2.5rem 2rem; }
-  .coming-soon-box { background: var(--bg-card); border: 1px dashed var(--border); border-radius: 16px; padding: 4rem 2rem; text-align: center; }
-
-  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
-  .about-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; }
-  .about-history-list { list-style: none; padding: 0; }
-  .about-history-item { display: flex; gap: 12px; margin-bottom: 16px; align-items: flex-start; }
-  .about-history-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); margin-top: 6px; flex-shrink: 0; }
-  .about-history-dot.current { background: var(--brand); }
-  .about-rules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-  .rule-item { display: flex; gap: 12px; }
-  .rule-num { font-family: 'Montserrat', sans-serif; font-weight: 700; color: var(--text-muted); font-size: 16px; }
-  .rule-text { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
-  .rule-title { color: var(--text-main); font-weight: 700; }
-  .committee-grid { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
-  .committee-badge { border: 1px solid var(--border); padding: 12px; border-radius: 8px; font-size: 12px; background: var(--bg-body); }
-  .committee-title { font-weight: 700; color: var(--text-main); }
-  .committee-name { color: var(--text-muted); font-style: italic; margin-top: 4px; font-size: 11px; }
-
-  @media(max-width: 900px) {
-    nav { flex-direction: column; padding: 15px 1rem; height: auto; gap: 15px;}
-    .nav-logo { justify-content: center; padding: 0; }
-    .nav-links { width: 100%; justify-content: center; padding: 0; }
-    .nav-actions { justify-content: center; width: 100%; padding: 0; }
-  }
-
-  @media(max-width: 800px) {
-    .results-layout { grid-template-columns: 1fr !important; }
-  }
+  /* SUCCESS SCREEN */
+  #success-screen { display: none; text-align: center; padding: 2rem 0; }
+  .success-icon { font-size: 64px; margin-bottom: 1rem; display: block; }
 
   @media(max-width: 600px) {
-    .nav-cta { display: none; }
-    .form-row { grid-template-columns: 1fr; }
-    .stats-bar { grid-template-columns: repeat(2, 1fr); }
-    .hero-title { font-size: 42px; }
-    .about-grid, .about-rules-grid { grid-template-columns: 1fr; } 
-    .auction-btn { margin-left: 0; width: 100%; justify-content: center; }
-    .fixture-body { flex-direction: column; gap: 16px; }
-    .fixture-team { width: 100%; justify-content: center; }
-    .fixture-team.away { flex-direction: row; } 
-    .result-scorer-list.right { text-align: center; }
-    .result-scorer-list { text-align: center; }
+    .form-grid { grid-template-columns: 1fr; }
+    .form-card { padding: 1.5rem; }
+    .hero-title { font-size: 28px; }
+    .pay-row { flex-direction: column; align-items: flex-start; gap: 8px; }
   }
 </style>
 </head>
 <body>
 
-<nav>
-  <div class="nav-logo" onclick="showPage('home')">
-    <img src="https://i.postimg.cc/nrgJD2Zm/EFL.png" alt="EFL Season 4 Logo" class="logo-img">
+<header>
+  <div class="logo-area">
+    <img src="https://i.postimg.cc/nrgJD2Zm/EFL.png" alt="EFL Logo" class="logo-img">
     <div>
-      <div class="nav-title">English Football League</div>
-      <div class="nav-sub">Jahangirnagar University · Dept. of English</div>
+      <div class="logo-text">English Football League</div>
+      <div class="logo-sub">JU Dept. of English</div>
     </div>
   </div>
-  <div class="nav-links">
-    <button class="nav-btn active" onclick="showPage('home', this)">🏠 Home</button>
-    <button class="nav-btn" onclick="showPage('teams', this)">🛡️ Teams</button>
-    <button class="nav-btn" onclick="showPage('players', this)">🏃‍♂️ Players</button>
-    <button class="nav-btn" onclick="showPage('fixtures', this)">📅 Fixtures</button>
-    <button class="nav-btn" onclick="showPage('results', this)">📊 Results & Stats</button>
-    <button class="nav-btn" onclick="showPage('standings', this)">🏆 Points Table</button>
-    <button class="nav-btn" onclick="showPage('supporters', this)">🤝 Supporters</button>
-    <button class="nav-btn" onclick="showPage('about', this)">ℹ️ About</button>
-  </div>
-  <div class="nav-actions">
-    <!-- App Download Button -->
-    <div style="display: flex; flex-direction: column; align-items: center; gap: 2px; margin-right: 10px;">
-      <a href="https://github.com/madhu734/EFL/releases/download/SP/EFL.apk" class="nav-btn" style="text-decoration: none; border: 1.5px solid #10B981; color: #10B981; background: rgba(16, 185, 129, 0.05);" title="Download EFL Season 4 Android App">
-        📱 Download App
-      </a>
-      <span style="font-size: 7.5px; color: var(--text-muted); text-align: center; max-width: 125px; line-height: 1.3;">*(Only Android, may show harmful warning, but can be ignored and continued anyway)</span>
-    </div>
+</header>
 
-    <!-- Theme Toggle Button -->
-    <div style="display: flex; flex-direction: column; align-items: center; gap: 2px; margin-right: 10px;">
-      <button class="theme-toggle-btn" onclick="toggleTheme()" id="themeToggleBtn" title="Toggle Dark/Light Mode">🌙</button>
-      <span id="themeToggleText" style="font-size: 9px; color: var(--text-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Dark</span>
-    </div>
-    <button class="nav-cta" style="background: var(--text-muted); cursor: default; box-shadow: none;" disabled>Registration Closed</button>
-  </div>
-</nav>
-
-<!-- HOME -->
-<div id="page-home" class="page active">
-  <div class="hero">
-    <div class="hero-badge animate-on-scroll"><span class="pulse" style="background: #10B981;"></span> Season 4</div>
-    <div class="hero-season animate-on-scroll">Jahangirnagar University · Department of English</div>
-    <div class="hero-title animate-on-scroll">English<br>Football<br>League</div>
-    <div class="hero-sub animate-on-scroll">The most anticipated football tournament of the Department of English is back. Six elite squads. One champion. Season 4 begins soon.</div>
-    <div class="hero-actions animate-on-scroll">
-      <button class="btn-primary" onclick="window.open('https://eflsupport.duckdns.org', '_blank')" style="text-transform: none;">Register as a supporter of the tournament/any team (not player)</button>
-      <button class="btn-outline" onclick="showPage('teams')">View All Teams</button>
-    </div>
-  </div>
-  
-  <div class="stats-bar">
-    <div class="stat-item"><div class="stat-num">4</div><div class="stat-label">Season</div></div>
-    <div class="stat-item"><div class="stat-num">6</div><div class="stat-label">Teams</div></div>
-    <div class="stat-item"><div id="stat-players" class="stat-num">0</div><div class="stat-label">Players Registered</div></div>
-    <div class="stat-item"><div class="stat-num">JU</div><div class="stat-label">Venue</div></div>
-  </div>
-  
-  <div class="section">
-      <div class="section-header animate-on-scroll">
-        <span class="section-tag">Season 4</span>
-        <div class="section-title">How It Works</div>
-        <div class="section-line"></div>
-      </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
-        <div class="animate-on-scroll" style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; transition: background 0.3s, border 0.3s;">
-          <div style="font-family: 'Montserrat', sans-serif; font-size: 32px; font-weight: 800; color: var(--brand); margin-bottom: 8px;">01</div>
-          <div style="font-weight: 700; font-size: 15px; margin-bottom: 6px;">Register</div>
-          <div style="font-size: 13px; color: var(--text-muted); line-height: 1.6; font-weight: 500;">Fill out the player registration form with your details, position, and batch information.</div>
-        </div>
-        <div class="animate-on-scroll" style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; transition: background 0.3s, border 0.3s; transition-delay: 0.1s;">
-          <div style="font-family: 'Montserrat', sans-serif; font-size: 32px; font-weight: 800; color: var(--brand); margin-bottom: 8px;">02</div>
-          <div style="font-weight: 700; font-size: 15px; margin-bottom: 6px;">Get Drafted</div>
-          <div style="font-size: 13px; color: var(--text-muted); line-height: 1.6; font-weight: 500;">Team owners and managers select players for their squad through the team drafting process.</div>
-        </div>
-        <div class="animate-on-scroll" style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; transition: background 0.3s, border 0.3s; transition-delay: 0.2s;">
-          <div style="font-family: 'Montserrat', sans-serif; font-size: 32px; font-weight: 800; color: var(--brand); margin-bottom: 8px;">03</div>
-          <div style="font-weight: 700; font-size: 15px; margin-bottom: 6px;">Compete</div>
-          <div style="font-size: 13px; color: var(--text-muted); line-height: 1.6; font-weight: 500;">League fixtures are scheduled and results tracked throughout the season on this portal.</div>
-        </div>
-      </div>
-    </div>
+<div class="hero">
+  <h1 class="hero-title">Back the <span>Legacy</span></h1>
+  <p class="hero-desc">Whether you're an alumnus cheering from afar or a senior guiding the next generation, your support fuels the passion of EFL Season 4. Join the Hall of Fame.</p>
 </div>
 
-<!-- TEAMS (Dynamic) -->
-<div id="page-teams" class="page">
-  <div class="section">
-    <div class="section-header animate-on-scroll">
-      <span class="section-tag">Season 4</span>
-      <div class="section-title">The Six Teams</div> 
-      <div class="section-line"></div>
-    </div>
-    <div class="teams-grid" id="teams-container">
-      <div class="global-loader"><span class="ai-loader" style="border-color: var(--brand); border-bottom-color: transparent;"></span> Loading Teams...</div>
-    </div>
-  </div>
-</div>
-
-<!-- PLAYERS DIRECTORY -->
-<div id="page-players" class="page">
-  <div class="section">
-    <div class="section-header animate-on-scroll">
-      <span class="section-tag">Draft Pool</span>
-      <div class="section-title">Player Directory</div>
-      <div class="section-line"></div>
-    </div>
+<div class="form-wrap">
+  <div class="form-card" id="main-form-card">
     
-    <div class="player-filter-bar animate-on-scroll" style="flex-direction: column; align-items: flex-start; gap: 16px;">
-      <!-- Search Input -->
-      <div style="width: 100%; position: relative;">
-         <input type="text" id="player-search" placeholder="🔍 Search players by name..." style="width: 100%; padding: 12px 16px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-input); font-size: 14px; font-family: 'Inter', sans-serif; color: var(--text-main); outline: none; transition: border 0.2s;">
-      </div>
-      <div style="display: flex; justify-content: space-between; width: 100%; align-items: center; flex-wrap: wrap; gap: 10px;">
-        <div class="category-buttons">
-          <button class="cat-btn active" onclick="setCategoryFilter('All', this)">All Players</button>
-          <button class="cat-btn" onclick="setCategoryFilter('Icon', this)">Icon</button>
-          <button class="cat-btn" onclick="setCategoryFilter('A', this)">Category A</button>
-          <button class="cat-btn" onclick="setCategoryFilter('B', this)">Category B</button>
-          <button class="cat-btn" onclick="setCategoryFilter('C', this)">Category C</button>
-          <button class="cat-btn" onclick="setCategoryFilter('GK', this)">GK</button>
-        </div>
-        <button class="auction-btn" onclick="startAuctionMode()">
-          <span style="font-size:16px;">🖥️</span> Presentation Mode
-        </button>
-      </div>
-    </div>
-
-    <div class="player-directory-grid" id="players-container">
-      <div class="global-loader" style="grid-column: 1/-1;"><span class="ai-loader" style="border-color: var(--brand); border-bottom-color: transparent;"></span> Loading Players...</div>
-    </div>
-  </div>
-</div>
-
-<!-- FIXTURES PAGE -->
-<div id="page-fixtures" class="page">
-  <div class="fixtures-wrap">
-    <div class="section-header animate-on-scroll">
-      <span class="section-tag">EFL S4</span>
-      <div class="section-title">Fixtures</div>
-      <div class="section-line"></div>
-    </div>
-    <div id="fixtures-container">
-      <div class="global-loader"><span class="ai-loader" style="border-color: var(--brand); border-bottom-color: transparent;"></span> Loading Fixtures...</div>
-    </div>
-  </div>
-</div>
-
-<!-- RESULTS & STATS PAGE -->
-<div id="page-results" class="page">
-  <div class="results-wrap">
-    <div class="section-header animate-on-scroll">
-      <span class="section-tag">EFL S4</span>
-      <div class="section-title">Results & Stats</div>
-      <div class="section-line"></div>
-    </div>
+    <div class="section-title">Supporter Details</div>
     
-    <div class="results-layout animate-on-scroll" style="display: grid; grid-template-columns: 2fr 1fr; gap: 24px;">
-       <!-- Left Side: Match Results -->
-       <div>
-         <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 18px; margin-bottom: 16px; text-transform: uppercase;">Match Results</div>
-         <div id="results-container">
-            <div class="coming-soon-box" style="padding: 3rem 2rem;">
-              <span class="cs-icon" style="font-size: 32px;">🏆</span>
-              <div class="cs-title" style="font-size: 16px; margin-top: 8px;">No results published yet.</div>
-            </div>
-         </div>
-       </div>
-
-       <!-- Right Side: Top Scorers -->
-       <div>
-         <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 18px; margin-bottom: 16px; text-transform: uppercase;">Top Scorers</div>
-         <div id="top-scorers-container" style="background: var(--bg-input); border: 1px solid var(--border); border-radius: 16px; padding: 16px; transition: background 0.3s, border 0.3s;">
-            <div style="text-align: center; color: var(--text-muted); font-size: 13px; padding: 2rem 0;">Stats will update once matches are played.</div>
-         </div>
-       </div>
-    </div>
-  </div>
-</div>
-
-<!-- STANDINGS (POINTS TABLE) PAGE -->
-<div id="page-standings" class="page">
-  <div class="standings-wrap">
-    <div class="section-header animate-on-scroll">
-      <span class="section-tag">EFL S4</span>
-      <div class="section-title">Points Table</div>
-      <div class="section-line"></div>
-    </div>
-    
-    <div id="standings-export-area" class="standings-table-container animate-on-scroll">
-       <div id="standings-export-header" style="display: none; text-align: center; padding: 24px 24px 0; background: var(--bg-card);">
-          <div style="font-family: 'Montserrat', sans-serif; font-size: 24px; font-weight: 900; letter-spacing: 2px; color: var(--brand);">EFL SEASON 4</div>
-          <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; font-weight: 700;">Official Points Table</div>
-       </div>
-
-       <div style="padding: 16px;">
-         <table class="standings-table">
-            <thead>
-               <tr>
-                  <th class="align-left" style="width: 40px;">Pos</th>
-                  <th class="align-left">Team</th>
-                  <th title="Played">P</th>
-                  <th title="Won">W</th>
-                  <th title="Drawn">D</th>
-                  <th title="Lost">L</th>
-                  <th title="Goals For" class="hide-mobile">GF</th>
-                  <th title="Goals Against" class="hide-mobile">GA</th>
-                  <th title="Goal Difference">GD</th>
-                  <th title="Points">Pts</th>
-                  <th title="Last 5 Matches Form">Last 5</th>
-               </tr>
-            </thead>
-            <tbody id="standings-body">
-               <!-- Table Rows injected via JS -->
-            </tbody>
-         </table>
-       </div>
-       
-       <div id="standings-export-footer" style="display: none; text-align: center; padding: 16px; font-size: 11px; color: var(--text-muted); border-top: 1px solid var(--border); font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">
-          Jahangirnagar University · Dept. of English
-       </div>
-    </div>
-
-    <div class="animate-on-scroll" style="display: flex; justify-content: flex-end; margin-top: 16px;">
-        <button class="export-btn" onclick="downloadStandings()">
-           ⬇️ Download Points Table
-        </button>
-    </div>
-  </div>
-</div>
-
-<!-- SUPPORTERS / DONORS PAGE -->
-<div id="page-supporters" class="page">
-  <div class="supporters-wrap">
-    <div class="section-header animate-on-scroll">
-      <span class="section-tag">Hall of Fame</span>
-      <div class="section-title">Supporters & Donors</div>
-      <div class="section-line"></div>
-    </div>
-    
-    <div class="animate-on-scroll" style="text-align: center; margin-bottom: 2rem;">
-        <p style="font-size: 15px; color: var(--text-muted); line-height: 1.7; max-width: 600px; margin: 0 auto; font-weight: 500;">
-            We extend our deepest gratitude to the esteemed alumni and well-wishers who have generously contributed to making EFL Season 4 a grand success. Your support means everything to us.
-        </p>
-    </div>
-
-    <div id="supporters-container" class="supporter-grid">
-        <div class="global-loader" style="grid-column: 1/-1;"><span class="ai-loader" style="border-color: var(--brand); border-bottom-color: transparent;"></span> Loading Supporters...</div>
-    </div>
-  </div>
-</div>
-
-<!-- REGISTRATION -->
-<div id="page-register" class="page">
-  <div class="reg-wrap">
-    <div class="reg-header animate-on-scroll">
-      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(99,102,241,0.05);border:1px solid rgba(99,102,241,0.2);padding:6px 14px;border-radius:20px;font-size:11px;color:#6366f1;letter-spacing:1px;margin-bottom:1rem;font-weight:700">EFL SEASON 4</div>
-      <div class="reg-title">Player Registration</div>
-      <div style="font-size:13px;color:var(--text-muted);font-weight:500;">Fill in your details below to register for EFL Season 4. All fields marked * are required.</div>
-    </div>
-    
-    <div class="reg-form animate-on-scroll" id="regFormClosed" style="text-align: center; padding: 4rem 2rem;">
-      <div style="font-size: 48px; margin-bottom: 16px;">🔒</div>
-      <div style="font-family: 'Montserrat', sans-serif; font-size: 24px; font-weight: 800; margin-bottom: 12px; color: var(--text-main);">Registration Closed</div>
-      <div style="color: var(--text-muted); font-size: 14px; margin-bottom: 24px; line-height: 1.6;">Player registration for EFL Season 4 has officially ended. Thank you for the overwhelming response!</div>
-      <button class="submit-btn" onclick="window.open('https://eflsupport.duckdns.org', '_blank')" style="width: auto; padding: 12px 32px; text-transform: none;">Register as a Supporter</button>
-    </div>
-
-    <div class="reg-form animate-on-scroll" id="regForm" style="display: none;">
-      <div class="form-error-summary" id="formErrorSummary">Please check the highlighted fields and fill them correctly.</div>
-      
-      <div class="form-row">
-        <div class="form-group">
-          <label>Full Name <span>*</span></label>
-          <input type="text" placeholder="Your full name" id="f-name" oninput="removeError(this)">
-          <div class="error-msg">Name is required</div>
-        </div>
-        <div class="form-group">
-          <label>Batch <span>*</span></label>
-          <input type="text" placeholder="e.g. 51st" id="f-batch" oninput="removeError(this)">
-          <div class="error-msg">Batch is required</div>
-        </div>
+    <div class="form-grid">
+      <div class="form-group full">
+        <label>Full Name <span>*</span></label>
+        <input type="text" id="f-name" placeholder="Full Name" oninput="clearErr(this)">
+        <span class="error-text">Name is required</span>
       </div>
       
-      <div class="form-row">
-        <div class="form-group">
-          <label>Contact Number <span>*</span></label>
-          <input type="tel" placeholder="+880 XXXXXXXXXX" id="f-phone" oninput="removeError(this)">
-          <div class="error-msg">Valid contact number is required</div>
-        </div>
-        <div class="form-group">
-          <label>Preferred Position <span>*</span></label>
-          <select id="f-pos" onchange="removeError(this)">
-            <option value="">Select position</option>
-            <option>Goalkeeper</option>
-            <option>Defender — Centre-Back</option>
-            <option>Defender — Right-Back</option>
-            <option>Defender — Left-Back</option>
-            <option>Midfielder — Defensive</option>
-            <option>Midfielder — Central</option>
-            <option>Midfielder — Attacking</option>
-            <option>Winger — Right</option>
-            <option>Winger — Left</option>
-            <option>Forward — Striker</option>
-            <option>Enthusiast</option>
-          </select>
-          <div class="error-msg">Please select your preferred position</div>
-        </div>
+      <div class="form-group">
+        <label>Batch <span>*</span></label>
+        <input type="text" id="f-batch" placeholder="Batch" oninput="clearErr(this)">
+        <span class="error-text">Batch is required</span>
       </div>
       
-      <div class="form-row">
-        <div class="form-group">
-          <label>Secondary Position</label>
-          <select id="f-sec-pos">
-            <option value="">Select position (optional)</option>
-            <option>Goalkeeper</option>
-            <option>Defender</option>
-            <option>Midfielder</option>
-            <option>Forward</option>
-            <option>Enthusiast</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Available to play? <span>*</span></label>
-          <select id="f-availability" onchange="removeError(this)">
-            <option value="">Select availability</option>
-            <option value="will be available">will be available</option>
-            <option value="will not be available">will not be available</option>
-          </select>
-          <div class="error-msg">Please select your availability</div>
-        </div>
+      <div class="form-group">
+        <label>Phone Number <span>*</span></label>
+        <input type="tel" id="f-phone" placeholder="Contact number" oninput="clearErr(this)">
+        <span class="error-text">Phone is required</span>
       </div>
 
       <div class="form-group full">
-        <label>Profile Photo <span>*</span></label>
-        <div class="photo-upload" onclick="document.getElementById('photoInput').click()" id="photoBox">
-          <span class="photo-icon" id="photoIcon">📷</span>
-          <div class="photo-text" id="photoText">Click to upload your photo</div>
-          <div class="photo-sub">JPG, PNG or WEBP · Max 20MB · This Photo will be in your profile and will be presented during Auction.</div>
+        <label>Your Photo (Max 5MB) <span>*</span></label>
+        <div class="photo-upload-box" onclick="document.getElementById('f-photo').click()" id="photo-box">
+          <span class="upload-icon" id="photo-icon">📸</span>
+          <div class="upload-text" id="photo-text">Click to upload profile photo</div>
+          <div class="upload-sub">Square or portrait ratio looks best on the card!</div>
         </div>
-        <div class="error-msg" id="photoError">Profile photo is required</div>
-        <input type="file" id="photoInput" accept="image/*" style="display:none" onchange="handlePhoto(this)">
+        <span class="error-text" id="photo-err">Valid photo (under 5MB) is required</span>
+        <input type="file" id="f-photo" accept="image/*" style="display: none;" onchange="handlePhoto(this)">
       </div>
-      
+
       <div class="form-group full">
-        <label>Previous Football Experience</label>
-        <textarea id="f-exp" placeholder="Briefly describe your playing style or past experience. E.g. 'I am fast, played inter-batch last year, good at crossing...'"></textarea>
+        <label>Message / Words of Wisdom (Optional)</label>
+        <textarea id="f-message" placeholder="Drop a line of wisdom, a good luck wish for the juniors, or even a fun roast..."></textarea>
       </div>
-      
-      <div class="payment-box" id="payBox">
-        <div class="payment-title">Registration Fee Payment *</div>
-        <div style="font-size:12px;color:var(--text-muted);margin-bottom:14px;line-height:1.5;font-weight:500;">Select your payment method. Complete the payment first, then enter your transaction ID or reference below.</div>
-
-        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;">
-          <div class="pay-opt selected" data-type="digital" onclick="selectPay(this,'digital')">
-            <div style="font-size:12px;color:var(--text-muted);margin-bottom:4px">bKash / Nagad / Rocket-8</div>
-            <div style="font-weight:700;font-size:15px;color:var(--text-main)">Mobile Banking</div>
-            <span class="pay-amount">355 <span style="font-size:12px;font-family:'Inter',sans-serif;font-weight:600;color:var(--text-muted);text-transform:none;letter-spacing:0.5px">(with Jersey)</span></span>
-          </div>
-          <div class="pay-opt" data-type="bank" onclick="selectPay(this,'bank')">
-            <div style="font-size:12px;color:var(--text-muted);margin-bottom:4px">Bank / Card Transfer</div>
-            <div style="font-weight:700;font-size:15px;color:var(--text-main)">Bank & Card</div>
-            <span class="pay-amount">355 <span style="font-size:12px;font-family:'Inter',sans-serif;font-weight:600;color:var(--text-muted);text-transform:none;letter-spacing:0.5px">(with Jersey)</span></span>
-          </div>
-        </div>
-        
-        <div id="digitalInfo">
-          <div class="pay-number-row">
-            <div class="pay-number-label">Send Money / Cash In</div>
-            <div class="pay-number-val">01932323940</div>
-            <div style="font-size:11px;color:var(--text-muted);margin-left:auto;font-weight:600;">(Personal)</div>
-          </div>
-          <div class="form-group" style="margin-top:12px">
-            <label>Transaction ID <span>*</span></label>
-            <input type="text" placeholder="e.g. 8N7X3Q2L" id="f-txn-digital" oninput="removeError(this)">
-            <div class="error-msg">Transaction ID is required</div>
-          </div>
-        </div>
-        
-        <div id="bankInfo" style="display:none">
-          <div class="pay-number-row" style="flex-direction:column; align-items:flex-start; gap:8px;">
-            <div style="display:flex; justify-content:space-between; width:100%; align-items:center;">
-               <span class="pay-number-label">Account Name</span>
-               <span class="pay-number-val" style="font-size:13px; color:var(--text-main)">TAUHIDUL ISLAM MADHU</span>
-            </div>
-            <div style="display:flex; justify-content:space-between; width:100%; align-items:center;">
-               <span class="pay-number-label">Account Number</span>
-               <span class="pay-number-val">1067304020001</span>
-            </div>
-            <div style="display:flex; justify-content:space-between; width:100%; align-items:center;">
-               <span class="pay-number-label">Card Number</span>
-               <span class="pay-number-val" style="font-size:14px; color:var(--brand)">4777920800295224</span>
-            </div>
-            <div style="display:flex; justify-content:space-between; width:100%; align-items:center;">
-               <span class="pay-number-label">Bank Name</span>
-               <span class="pay-number-val" style="font-size:13px; color:var(--text-main)">BRAC Bank PLC</span>
-            </div>
-            <div style="display:flex; justify-content:space-between; width:100%; align-items:center;">
-               <span class="pay-number-label">Branch</span>
-               <span class="pay-number-val" style="font-size:13px; color:var(--text-main)">JAMALPUR BRANCH</span>
-            </div>
-            <div style="display:flex; justify-content:space-between; width:100%; align-items:center;">
-               <span class="pay-number-label">Routing Number</span>
-               <span class="pay-number-val" style="font-size:13px; color:var(--text-muted)">060390855</span>
-            </div>
-            <div style="display:flex; justify-content:space-between; width:100%; align-items:center;">
-               <span class="pay-number-label">SWIFT Code</span>
-               <span class="pay-number-val" style="font-size:13px; color:var(--text-muted)">BRAKBDDH</span>
-            </div>
-          </div>
-          <div class="form-group" style="margin-top:12px">
-            <label>Transaction Ref / Note <span>*</span></label>
-            <input type="text" placeholder="e.g. Bank Ref or Last 4 digits of card" id="f-txn-bank" oninput="removeError(this)">
-            <div class="error-msg">Reference is required</div>
-          </div>
-        </div>
-      </div>
-      
-      <div>
-        <div style="display:flex;align-items:flex-start;gap:10px">
-          <input type="checkbox" id="f-agree" style="width:auto;margin-top:3px" onchange="removeCheckboxError()">
-          <label for="f-agree" id="f-agree-label" style="font-size:12px;text-transform:none;letter-spacing:0;font-weight:500;color:var(--text-muted);line-height:1.5;cursor:pointer;transition:color 0.2s;">
-            I confirm that all information provided is accurate and I agree to abide by the rules and regulations of EFL Season 4 as set by the Department of English, Jahangirnagar University. *
-          </label>
-        </div>
-      </div>
-      
-      <button class="submit-btn" onclick="submitForm()">Submit Registration</button>
     </div>
+
+    <!-- NEW HYBRID JERSEY SUPPORT SECTION -->
+    <div class="jersey-toggle-box" id="jersey-box" onclick="toggleJerseySupport()">
+      <input type="checkbox" id="f-jersey-check" class="jersey-checkbox" onclick="event.stopPropagation(); toggleJerseySupport();">
+      <div class="jersey-text-wrap">
+        <div class="jersey-title">I want to support with a Jersey 👕</div>
+        <div class="jersey-desc">Get the official team jersey of your favorite squad. (Requires an additional fee of BDT 300)</div>
+      </div>
+    </div>
+
+    <div class="jersey-details-panel" id="jersey-details">
+      <div class="form-grid" style="margin-bottom: 0;">
+        <div class="form-group">
+          <label>Team you are supporting <span>*</span></label>
+          <select id="f-team" onchange="clearErr(this); updateTeamSelection(this);">
+            <option value="">Select a team...</option>
+            <option value="decide_later">Will decide later</option>
+            <!-- Teams dynamically injected here -->
+          </select>
+          <span class="error-text">Please select a team</span>
+        </div>
+        <div class="form-group">
+          <label>Jersey Size <span>*</span></label>
+          <select id="f-size" onchange="clearErr(this)">
+            <option value="">Select size...</option>
+            <option value="S">S (Small)</option>
+            <option value="M">M (Medium)</option>
+            <option value="L">L (Large)</option>
+            <option value="XL">XL (Extra Large)</option>
+            <option value="XXL">XXL (Double XL)</option>
+          </select>
+          <span class="error-text">Please select a size</span>
+        </div>
+      </div>
+    </div>
+    <!-- END HYBRID JERSEY SUPPORT SECTION -->
+
+    <div class="section-title">Contribution & Payment</div>
     
-    <div class="success-box" id="successBox">
-      <span class="success-icon">✅</span>
-      <div class="success-title">Registration Submitted!</div>
-      <div style="font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:1.5rem;font-weight:500;">Thank you for registering for <strong style="color:var(--text-main);font-weight:700;">EFL Season 4</strong>. Your application has been saved to the database.</div>
-      <button class="btn-outline" onclick="resetForm()">Register Another</button>
+    <!-- DYNAMIC FEE BADGE -->
+    <div class="fee-badge" id="fee-badge">
+       <span>Jersey Support Fee:</span>
+       <span>BDT 300</span>
     </div>
-  </div>
-</div>
 
-<!-- ABOUT PAGE -->
-<div id="page-about" class="page">
-  <div class="about-wrap">
-    <div class="section-header animate-on-scroll">
-      <span class="section-tag">JU English Dept.</span>
-      <div class="section-title">About EFL</div>
-      <div class="section-line"></div>
+    <div class="payment-methods">
+      <div class="pay-tab active" onclick="switchPay('mfs')" id="tab-mfs">Mobile Banking</div>
+      <div class="pay-tab" onclick="switchPay('bank')" id="tab-bank">Bank / Card</div>
     </div>
-    
-    <div class="about-grid">
-      <div class="about-card animate-on-scroll">
-        <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 20px; margin-bottom: 16px; text-transform: uppercase;">The Tournament</div>
-        <p style="font-size: 14px; color: var(--text-muted); line-height: 1.7; font-weight: 500;">The English Football League (EFL) is the annual intra-departmental football tournament organized by students of the Department of English, Jahangirnagar University. Now entering its 4th season, EFL has grown into a celebrated tradition that brings together football enthusiasts from all batches.</p>
-      </div>
-      
-      <div class="about-card animate-on-scroll">
-        <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 20px; margin-bottom: 16px; text-transform: uppercase;">Season History</div>
-        <div class="about-history-list">
-          <div class="about-history-item"><div class="about-history-dot"></div><div><div class="rule-title">Season 1</div><div class="rule-text">Inaugural edition. The tradition begins by Batch 48.</div></div></div>
-          <div class="about-history-item"><div class="about-history-dot"></div><div><div class="rule-title">Season 2</div><div class="rule-text">Expanded format with more teams and players.</div></div></div>
-          <div class="about-history-item"><div class="about-history-dot"></div><div><div class="rule-title">Season 3</div><div class="rule-text">Record participation and memorable finals.</div></div></div>
-          <div class="about-history-item"><div class="about-history-dot current"></div><div><div class="rule-title">Season 4 — Current</div><div class="rule-text">Now with dedicated digital platform introduced by Batch 51.</div></div></div>
+
+    <!-- MFS DETAILS -->
+    <div class="pay-details-box" id="box-mfs">
+      <div class="pay-row">
+        <div class="pay-label">bKash / Nagad / Rocket (8)</div>
+        <div class="pay-value-wrap">
+          <div class="pay-value" id="val-mfs">01932323940</div>
+          <button class="copy-btn" onclick="copyTxt('01932323940', this)">Copy</button>
         </div>
       </div>
+      <div style="font-size: 11px; color: var(--text-muted); text-align: right; margin-top: 4px;">* Send Money or Cash In</div>
     </div>
 
-    <div class="about-card animate-on-scroll" style="margin-bottom: 20px;">
-        <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 20px; margin-bottom: 20px; text-transform: uppercase;">Tournament Rules</div>
-        <div class="about-rules-grid">
-            <div class="rule-item"><div class="rule-num">01</div><div><span class="rule-title">Eligibility:</span> <br><span class="rule-text">All currently enrolled students of the Dept. of English, JU are eligible to participate.</span></div></div>
-            <div class="rule-item"><div class="rule-num">02</div><div><span class="rule-title">Squad Size:</span> <br><span class="rule-text">Each team must register a minimum of 7 and a maximum of 10 players.</span></div></div>
-            <div class="rule-item"><div class="rule-num">03</div><div><span class="rule-title">Format:</span> <br><span class="rule-text">League format followed by knockout semi-finals and a grand final.</span></div></div>
-            <div class="rule-item"><div class="rule-num">04</div><div><span class="rule-title">Match Duration:</span> <br><span class="rule-text">Each match consists of two halves as determined by the organizing committee.</span></div></div>
-            <div class="rule-item"><div class="rule-num">05</div><div><span class="rule-title">Fair Play:</span> <br><span class="rule-text">All players are expected to maintain sportsmanship and respect for opponents and officials.</span></div></div>
-            <div class="rule-item"><div class="rule-num">06</div><div><span class="rule-title">Disputes:</span> <br><span class="rule-text">All disputes shall be referred to the organizing committee whose decision is final.</span></div></div>
-        </div>
-    </div>
-
-    <div class="about-card animate-on-scroll">
-        <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 20px; margin-bottom: 12px; text-transform: uppercase;">Organizing Committee</div>
-        <p style="font-size: 14px; color: var(--text-muted); line-height: 1.7; font-weight: 500;">EFL Season 4 is organized by dedicated student volunteers from the Department of English, Jahangirnagar University. Committee member details will be published here soon.</p>
-        <div class="committee-grid">
-            <div class="committee-badge"><div class="committee-title">Tournament Director</div><div class="committee-name">UTAU -(The Watcher)</div></div>
-            <div class="committee-badge"><div class="committee-title">Registration Lead & Logistics</div><div class="committee-name">Sayem</div></div>
-            <div class="committee-badge"><div class="committee-title">Media & Comms</div><div class="committee-name">Madhu, Indrolal</div></div>
-            <div class="committee-badge"><div class="committee-title">Alumni Dealers</div><div class="committee-name">Akon & Sayem</div></div>
-            <div class="committee-badge"><div class="committee-title">Rules</div><div class="committee-name">Yacchine, Jannat, Atik, Shishir</div></div>
-        </div>
-    </div>
-  </div>
-</div>
-
-<!-- SUPPORT MESSAGING BLOCK -->
-<div style="background: var(--brand); color: var(--bg-body); padding: 2.5rem 1rem; text-align: center; margin-top: 3rem; border-top: 4px solid var(--accent); transition: background-color 0.3s;">
-    <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 20px; margin-bottom: 12px; letter-spacing: 1px;">Need to update your data?</div>
-    <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 24px; max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.6; font-weight: 500;">
-        If you need to edit or change any of your submitted data (like your position, photo, availability, or team details), please reach out to our support directly.
-    </div>
-    <a href="https://wa.me/8801300890530" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: #25D366; color: white; padding: 12px 24px; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 14px; font-family: 'Inter', sans-serif; transition: transform 0.2s; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c-.003 1.396.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c.003-3.625 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg>
-        Contact via WhatsApp
-    </a>
-</div>
-
-<!-- GLOBAL FOOTER -->
-<footer style="text-align: center; padding: 2.5rem 1rem; border-top: 1px solid var(--border); background: transparent; font-family: 'Inter', sans-serif;">
-  <div style="font-size: 13px; color: var(--text-muted); font-weight: 500; display: flex; align-items: center; justify-content: center; gap: 6px;">
-    Organized & Hosted by <span style="color: var(--brand); font-weight: 800; font-family: 'Montserrat', sans-serif; letter-spacing: 0.5px;">BATCH 51</span>
-  </div>
-  <div style="font-size: 11px; color: var(--text-muted); margin-top: 6px; letter-spacing: 0.5px; font-weight: 500;">
-    Department of English, Jahangirnagar University
-  </div>
-</footer>
-
-<!-- AUCTION PRESENTATION MODAL OVERLAY -->
-<div class="modal-overlay" id="auctionModal" onclick="closeModal('auctionModal', event)">
-  <div class="modal-content sm" onclick="event.stopPropagation()">
-    <button class="modal-close" onclick="closeModal('auctionModal')">×</button>
-    <div style="padding: 2rem; text-align: center;">
-       <div id="auc-cat" style="font-size: 12px; color: var(--accent); font-weight: 800; letter-spacing: 2px; margin-bottom: 16px; text-transform: uppercase;">CATEGORY A</div>
-       <img id="auc-photo" src="" style="width: 180px; height: 180px; border-radius: 16px; object-fit: cover; margin-bottom: 16px; border: 4px solid var(--bg-input);">
-       <div id="auc-name" style="font-family: 'Montserrat', sans-serif; font-size: 28px; font-weight: 900; color: var(--text-main); margin-bottom: 4px;">PLAYER NAME</div>
-       <div id="auc-pos" style="font-size: 16px; color: var(--brand); font-weight: 700; text-transform: uppercase; margin-bottom: 8px;">POSITION</div>
-       <div id="auc-batch" style="font-size: 14px; color: var(--text-muted); font-weight: 600; margin-bottom: 24px;">Batch: --</div>
-       
-       <div class="auction-controls">
-          <button class="auction-nav-btn" id="auc-prev-btn" onclick="prevAuction()">◀ Prev</button>
-          <span id="auc-counter" style="font-weight: 700; align-self: center; color: var(--text-muted);">1 / 10</span>
-          <button class="auction-nav-btn" id="auc-next-btn" onclick="nextAuction()">Next ▶</button>
-       </div>
-    </div>
-  </div>
-</div>
-
-<!-- TEAM DETAILS MODAL OVERLAY -->
-<div class="modal-overlay" id="teamModal" onclick="closeModal('teamModal', event)">
-  <div class="modal-content" onclick="event.stopPropagation()">
-    <button class="modal-close" onclick="closeModal('teamModal')">×</button>
-    <div class="team-modal-header" id="tm-banner">
-      <div class="team-modal-crest" id="tm-crest">FC</div>
-    </div>
-    <div class="team-modal-body">
-      <div class="team-modal-name" id="tm-name">Team Name</div>
-      <div class="team-modal-meta">
-        <div class="manager-owner-info">
-          <img id="tm-manager-img" src="" class="avatar-sm" style="display:none;">
-          <span style="color: var(--text-main);">Manager: <span id="tm-manager" style="color: var(--text-muted); font-weight: 600;">TBD</span></span>
-        </div>
-        <span style="color: var(--border);">|</span>
-        <div class="manager-owner-info">
-          <img id="tm-owner-img" src="" class="avatar-sm" style="display:none;">
-          <span style="color: var(--text-main);">Owner: <span id="tm-owner" style="color: var(--text-muted); font-weight: 600;">TBD</span></span>
+    <!-- BANK DETAILS -->
+    <div class="pay-details-box" id="box-bank" style="display: none;">
+      <div class="pay-row">
+        <div class="pay-label">Card Number</div>
+        <div class="pay-value-wrap">
+          <div class="pay-value" style="letter-spacing: 1px;">4777 9208 0029 5224</div>
+          <button class="copy-btn" onclick="copyTxt('4777920800295224', this)">Copy</button>
         </div>
       </div>
-      <div style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 800; color: var(--brand); text-transform: uppercase; margin-top: 2rem; border-bottom: 2px solid var(--border); padding-bottom: 8px;">Squad List</div>
-      <div class="player-grid" id="tm-players"></div>
-    </div>
-  </div>
-</div>
-
-<!-- PLAYER PROFILE MODAL OVERLAY -->
-<div class="modal-overlay" id="playerModal" onclick="closeModal('playerModal', event)">
-  <div class="modal-content sm" onclick="event.stopPropagation()">
-    <button class="modal-close" onclick="closeModal('playerModal')">×</button>
-    <div style="padding: 2rem; text-align: center;">
-      <div style="width: 140px; height: 140px; margin: 0 auto 1rem; border-radius: 50%; overflow: hidden; border: 4px solid var(--border); background: var(--bg-input);">
-        <img id="pm-photo" src="" style="width: 100%; height: 100%; object-fit: cover;">
-      </div>
-      <div id="pm-name" style="font-family: 'Montserrat', sans-serif; font-size: 24px; font-weight: 800; color: var(--text-main); margin-bottom: 4px;">Player Name</div>
-      <div id="pm-pos" style="font-size: 14px; color: var(--brand); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Position</div>
-      <div id="pm-cat-badge" class="cat-badge" style="display:inline-block; margin-bottom: 16px;">Category</div>
-      
-      <div style="display: flex; gap: 10px; justify-content: center; margin-bottom: 20px;">
-        <div style="background: var(--bg-input); padding: 8px 16px; border-radius: 8px; border: 1px solid var(--border);">
-          <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Batch</div>
-          <div id="pm-batch" style="font-weight: 700; font-size: 16px;">--</div>
-        </div>
-        <div id="pm-team-box" style="background: rgba(99,102,241,0.1); padding: 8px 16px; border-radius: 8px; border: 1px solid rgba(99,102,241,0.2); display: none;">
-          <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Team</div> 
-          <div id="pm-team" style="font-weight: 700; font-size: 16px; color: #6366f1;">--</div>
+      <div class="pay-row">
+        <div class="pay-label">Account Number</div>
+        <div class="pay-value-wrap">
+          <div class="pay-value">1067304020001</div>
+          <button class="copy-btn" onclick="copyTxt('1067304020001', this)">Copy</button>
         </div>
       </div>
-      
-      <div style="text-align: left; background: var(--bg-input); padding: 16px; border-radius: 8px; border: 1px solid var(--border);">
-        <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 700; margin-bottom: 8px;">Scouting Report / Experience</div>
-        <div id="pm-exp" style="font-size: 13px; line-height: 1.6; color: var(--text-main);">No experience provided.</div>
-      </div>
+      <div class="pay-row"><div class="pay-label">Account Name</div><div class="pay-value" style="font-size: 13px;">TAUHIDUL ISLAM MADHU</div></div>
+      <div class="pay-row"><div class="pay-label">Bank Name</div><div class="pay-value" style="font-size: 13px;">BRAC Bank PLC</div></div>
+      <div class="pay-row"><div class="pay-label">Branch / Routing</div><div class="pay-value" style="font-size: 13px;">JAMALPUR (060390855)</div></div>
     </div>
+
+    <div class="form-group" style="margin-bottom: 2rem;">
+      <label>Transaction ID / Reference <span>*</span></label>
+      <input type="text" id="f-trx" placeholder="Enter TrxID or Last 4 digits of card" oninput="clearErr(this)">
+      <span class="error-text">Transaction details are required</span>
+    </div>
+
+    <div class="consent-wrap">
+      <input type="checkbox" id="f-consent" checked>
+      <label for="f-consent" class="consent-text">I agree to let EFL publish my name, batch, photo, and message (if provided) on the official website's Supporter Wall. (Optional)</label>
+    </div>
+
+    <button class="submit-btn" id="submitBtn" onclick="submitDonation()">
+      <span class="loader" id="btn-loader"></span>
+      <span id="btn-text">Submit Details</span>
+    </button>
+
+  </div>
+
+  <!-- SUCCESS SCREEN -->
+  <div class="form-card" id="success-screen">
+    <span class="success-icon">🎉</span>
+    <h2 style="font-family: 'Montserrat'; font-weight: 900; color: var(--brand); font-size: 28px; margin-bottom: 12px; text-transform: uppercase;">Thank You!</h2>
+    <p style="color: var(--text-muted); font-weight: 500; line-height: 1.6; margin-bottom: 24px;">Your contribution has been recorded. Your official EFL Supporter Card is being generated and downloaded automatically.</p>
+    <button class="btn-outline" style="background: none; border: 2px solid var(--border); padding: 12px 24px; border-radius: 8px; font-weight: 700; cursor: pointer; color: var(--brand);" onclick="location.reload()">Submit Another</button>
   </div>
 </div>
 
-<!-- VIDEO PLAYER MODAL FOR HLS LIVE & HIGHLIGHTS -->
-<div class="modal-overlay" id="videoModal" onclick="closeVideoModal(event)">
-  <div class="modal-content" style="background: transparent; box-shadow: none; border: none; max-width: 900px;" onclick="event.stopPropagation()">
-    <button class="modal-close" style="top: -40px; right: 0; background: var(--accent);" onclick="closeVideoModal()">×</button>
-    <div class="video-container" id="video-container-box">
-       <!-- Video Tag and TV Overlay will be injected here by JS -->
-    </div>
-  </div>
-</div>
-
-<!-- HIDDEN PLAYER CARD TEMPLATE FOR EXPORT -->
+<!-- HIDDEN SUPPORTER CARD TEMPLATE FOR EXPORT -->
 <div style="position: absolute; top: -10000px; left: -10000px; width: 0; height: 0; overflow: hidden;">
-  <div id="player-card" style="width: 400px; background: #0f172a; border-radius: 20px; padding: 32px; font-family: 'Inter', sans-serif; color: #fff; text-align: center; border: 2px solid rgba(255,255,255,0.1); box-sizing: border-box; position: relative;">
+  <div id="export-card" style="width: 500px; background: linear-gradient(135deg, #0f172a, #1e1b4b); border-radius: 24px; padding: 40px; font-family: 'Inter', sans-serif; color: #fff; text-align: center; border: 4px solid #F59E0B; box-sizing: border-box; position: relative;">
       <div style="position: relative; z-index: 1;">
-          <div style="font-family: 'Montserrat', sans-serif; font-size: 30px; font-weight: 900; color: #fff; letter-spacing: 2px;">EFL SEASON 4</div>
-          <div style="font-size: 9px; color: #cbd5e1; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 28px; font-weight: 700;">Jahangirnagar University · Dept. of English</div>
-          <div style="width: 160px; height: 160px; margin: 0 auto 24px; border-radius: 50%; overflow: hidden; border: 4px solid #fff; background: #1e293b; box-shadow: 0 10px 25px rgba(0,0,0,0.4); position: relative;">
+          <div style="font-family: 'Montserrat', sans-serif; font-size: 32px; font-weight: 900; color: #F59E0B; letter-spacing: 2px; text-transform: uppercase;">EFL SEASON 4</div>
+          <div style="font-size: 11px; color: #cbd5e1; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 32px; font-weight: 700;">Jahangirnagar University · Dept. of English</div>
+          
+          <div style="width: 180px; height: 180px; margin: 0 auto 24px; border-radius: 50%; overflow: hidden; border: 6px solid #F59E0B; box-shadow: 0 10px 30px rgba(0,0,0,0.5); position: relative; background: #fff;">
               <img id="card-photo" src="" style="width: 100%; height: 100%; object-fit: cover; display: block;" crossorigin="anonymous">
           </div>
-          <div id="card-name" style="font-family: 'Montserrat', sans-serif; font-size: 26px; font-weight: 900; text-transform: uppercase; line-height: 1.1; margin-bottom: 8px; color: #f8fafc;">PLAYER NAME</div>
-          <div id="card-pos" style="font-size: 14px; color: #ef4444; font-weight: 800; margin-bottom: 24px; text-transform: uppercase; letter-spacing: 1px;">POSITION</div>
-          <div style="background: rgba(255,255,255,0.05); border-radius: 12px; padding: 16px; display: flex; justify-content: space-between; margin-bottom: 24px; border: 1px solid rgba(255,255,255,0.1);">
-              <div style="flex: 1; border-right: 1px solid rgba(255,255,255,0.1);">
-                  <div style="font-size: 10px; color: #94a3b8; text-transform: uppercase; font-weight: 700; margin-bottom: 4px; letter-spacing: 1px;">Batch</div>
-                  <div id="card-batch" style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 18px; color: #fff;">51st</div>
-              </div>
-              <div style="flex: 1;">
-                  <div style="font-size: 10px; color: #94a3b8; text-transform: uppercase; font-weight: 700; margin-bottom: 4px; letter-spacing: 1px;">Status</div>
-                  <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 18px; color: #22c55e;">VERIFIED</div>
-              </div>
-          </div>
-          <div style="font-size: 11px; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Official Player Registration Card</div>
-      </div>
-  </div>
-</div>
-
-<!-- HIDDEN MATCH RESULT CARD TEMPLATE FOR EXPORT -->
-<div style="position: absolute; top: -10000px; left: -10000px; width: 0; height: 0; overflow: hidden;">
-  <div id="export-result-card" style="width: 800px; background: linear-gradient(135deg, #0f172a, #1e1b4b); border-radius: 24px; padding: 48px; font-family: 'Inter', sans-serif; color: #fff; position: relative; border: 4px solid rgba(255,255,255,0.05); box-sizing: border-box;">
-      <div style="text-align: center; margin-bottom: 40px;">
-          <div style="font-family: 'Montserrat', sans-serif; font-size: 36px; font-weight: 900; letter-spacing: 3px; color: #fff;">EFL SEASON 4</div>
-          <div style="font-size: 14px; color: #94a3b8; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; margin-top: 8px;">Full Time Result</div>
-      </div>
-
-      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 40px;">
-          <!-- Team 1 -->
-          <div style="display: flex; flex-direction: column; align-items: center; flex: 1;">
-              <div id="erc-t1-crest" style="width: 120px; height: 120px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 32px; color: #fff; border: 4px solid rgba(255,255,255,0.2); box-shadow: 0 10px 30px rgba(0,0,0,0.5); margin-bottom: 16px; overflow: hidden;">T1</div>
-              <div id="erc-t1-name" style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 24px; text-transform: uppercase; text-align: center;">TEAM 1</div>
-          </div>
           
-          <!-- Score -->
-          <div style="display: flex; flex-direction: column; align-items: center; padding: 0 40px;">
-              <div style="background: rgba(0,0,0,0.3); padding: 16px 32px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; gap: 24px;">
-                 <span id="erc-t1-score" style="font-family: 'Montserrat', sans-serif; font-size: 64px; font-weight: 900; color: #fff; line-height: 1;">0</span>
-                 <span style="font-size: 24px; font-weight: 800; color: #64748b;">-</span>
-                 <span id="erc-t2-score" style="font-family: 'Montserrat', sans-serif; font-size: 64px; font-weight: 900; color: #fff; line-height: 1;">0</span>
+          <div id="card-name" style="font-family: 'Montserrat', sans-serif; font-size: 32px; font-weight: 900; text-transform: uppercase; line-height: 1.1; margin-bottom: 8px; color: #fff;">NAME HERE</div>
+          <div style="font-size: 16px; color: #cbd5e1; font-weight: 700; margin-bottom: 24px; text-transform: uppercase; letter-spacing: 2px;">Batch: <span id="card-batch" style="color: #fff;">00th</span></div>
+          
+          <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
+              <div style="display: inline-block; background: rgba(245, 158, 11, 0.15); border: 2px solid #F59E0B; padding: 12px 24px; border-radius: 50px;">
+                  <div style="font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 16px; color: #FDE68A; letter-spacing: 2px;">⭐ OFFICIAL SUPPORTER</div>
+              </div>
+              
+              <!-- Dynamic Team Support Badge -->
+              <div id="card-team-badge" style="display: none; background: rgba(255, 255, 255, 0.1); border: 2px solid rgba(255,255,255,0.3); padding: 8px 16px; border-radius: 50px; align-items: center; gap: 8px;">
+                  <img id="card-team-logo" src="" style="width: 24px; height: 24px; border-radius: 50%; object-fit: cover;" crossorigin="anonymous">
+                  <span id="card-team-name" style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 12px; color: #fff; text-transform: uppercase;">TEAM NAME</span>
               </div>
           </div>
-
-          <!-- Team 2 -->
-          <div style="display: flex; flex-direction: column; align-items: center; flex: 1;">
-              <div id="erc-t2-crest" style="width: 120px; height: 120px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 32px; color: #fff; border: 4px solid rgba(255,255,255,0.2); box-shadow: 0 10px 30px rgba(0,0,0,0.5); margin-bottom: 16px; overflow: hidden;">T2</div>
-              <div id="erc-t2-name" style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 24px; text-transform: uppercase; text-align: center;">TEAM 2</div>
-          </div>
-      </div>
-
-      <!-- Scorers -->
-      <div style="display: flex; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px;">
-          <div id="erc-t1-scorers" style="flex: 1; font-size: 16px; color: #cbd5e1; line-height: 1.8; padding-right: 20px;">
-              <!-- Scorers T1 -->
-          </div>
-          <div style="width: 1px; background: rgba(255,255,255,0.1);"></div>
-          <div id="erc-t2-scorers" style="flex: 1; font-size: 16px; color: #cbd5e1; line-height: 1.8; text-align: right; padding-left: 20px;">
-              <!-- Scorers T2 -->
-          </div>
-      </div>
-      
-      <!-- Player of the Match (Export Card) -->
-      <div id="erc-motm-container" style="display: none; text-align: center; margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
-          <div style="font-size: 12px; color: #f59e0b; text-transform: uppercase; font-weight: 800; letter-spacing: 2px; margin-bottom: 12px;">🏅 Player of the Match</div>
-          <div style="display: inline-flex; align-items: center; gap: 12px; background: rgba(0,0,0,0.3); padding: 8px 24px; border-radius: 40px; border: 1px solid rgba(245,158,11,0.3);">
-              <img id="erc-motm-photo" src="" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid #f59e0b;" crossorigin="anonymous">
-              <span id="erc-motm-name" style="font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 800; color: #fff;">NAME</span>
-          </div>
-      </div>
-      
-      <div style="text-align: center; font-size: 12px; color: #64748b; margin-top: 40px; letter-spacing: 2px; text-transform: uppercase; font-weight: 700;">
-          Jahangirnagar University · Dept. of English
       </div>
   </div>
 </div>
 
 <script>
 // ==========================================
-// POCKETBASE CONFIGURATION
+// CONFIGURATION
 // ==========================================
-const PB_CONFIG = {
-  baseURL: 'https://efljudb.duckdns.org', 
-};
-
+const PB_URL = 'https://efljudb.duckdns.org';
+let currentPayMethod = 'mfs';
+let photoFile = null;
 let db_teams = [];
-let db_players = [];
-let db_fixtures = [];
-let db_results = []; 
-let db_supporters = []; 
+let selectedTeamData = null;
 
-let currentFilter = 'All';
-let searchQuery = '';
-let currentFilteredPlayers = [];
-let auctionIndex = 0;
-let currentHls = null; // Global variable to track HLS instance
-
-let liveScoreInterval = null; // Global variable to track Live Score Polling Interval
-let currentLiveFixtureId = null;
-
-// ==========================================
-// THEME (DARK/LIGHT MODE) LOGIC
-// ==========================================
-function toggleTheme() {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    
-    document.getElementById('themeToggleBtn').textContent = newTheme === 'dark' ? '☀️' : '🌙';
-    const themeText = document.getElementById('themeToggleText');
-    if (themeText) themeText.textContent = newTheme === 'dark' ? 'Light' : 'Dark';
-}
-
-window.addEventListener('DOMContentLoaded', () => {
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    document.getElementById('themeToggleBtn').textContent = savedTheme === 'dark' ? '☀️' : '🌙';
-    const themeText = document.getElementById('themeToggleText');
-    if (themeText) themeText.textContent = savedTheme === 'dark' ? 'Light' : 'Dark';
-});
-
-// ==========================================
-// SEARCH LOGIC FOR PLAYERS
-// ==========================================
-document.getElementById('player-search').addEventListener('input', function(e) {
-    searchQuery = e.target.value.toLowerCase();
-    renderPlayersPage();
-});
-
-// ==========================================
-// SCROLL ANIMATION LOGIC (Intersection Observer)
-// ==========================================
-function observeElements() {
-    const elements = document.querySelectorAll('.animate-on-scroll, .team-card, .player-card, .fixture-card, .supporter-card, .about-card, .standings-table-container, .reg-form, .success-box, .player-filter-bar, .hero-badge, .hero-season, .hero-title, .hero-sub, .hero-actions, .top-scorer-card');
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-            }
-        });
-    }, { threshold: 0.1 });
-    
-    elements.forEach(el => {
-        if (!el.hasAttribute('data-observed')) {
-            el.classList.add('animate-on-scroll');
-            observer.observe(el);
-            el.setAttribute('data-observed', 'true');
-        }
-    });
-}
-
-// ==========================================
-// DATA PROCESSING HELPERS
-// ==========================================
-function extractScorers(res, teamPrefix) {
-    let ids = [];
-    // Iterate exactly through the 1-6 fields
-    for (let i = 1; i <= 6; i++) {
-        let val = res[`${teamPrefix}_goal_${i}`];
-        if (val) {
-            if (Array.isArray(val)) ids.push(...val);
-            else ids.push(val);
-        }
-    }
-    return ids;
-}
-
-// ==========================================
-// COLOR CONTRAST HELPERS
-// ==========================================
-function isLightColor(color) {
-    if (!color) return false;
-    let hex = color.replace('#', '').trim();
-    if (hex.toLowerCase() === 'white') return true;
-    if (hex.length === 3) hex = hex.split('').map(c => c + c).join('');
-    if (hex.length !== 6) return false;
-    let r = parseInt(hex.substring(0, 2), 16);
-    let g = parseInt(hex.substring(2, 4), 16);
-    let b = parseInt(hex.substring(4, 6), 16);
-    let luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
-    return luminance > 0.8; 
-}
-
-function getSafeTextColor(bgColor) {
-    return isLightColor(bgColor) ? '#1e293b' : bgColor; 
-}
-
-function getSafeCrestTextColor(bgColor) {
-    return isLightColor(bgColor) ? '#1e293b' : '#ffffff'; 
-}
-
-function getPbImageUrl(record, fileName) {
-  if (!fileName) return 'https://via.placeholder.com/200?text=No+Photo';
-  return `${PB_CONFIG.baseURL}/api/files/${record.collectionId}/${record.id}/${fileName}`;
-}
-
-function getPBLinkedTeamId(player) {
-  const t = player.team;
-  if (!t) return null;
-  if (Array.isArray(t)) return t.length > 0 ? t[0] : null;
-  return t;
-}
-
-// ==========================================
-// DATA FETCHING
-// ==========================================
-window.onload = () => {
-  fetchPBData();
-};
-
-async function fetchPBData() {
-  try {
-    const fetchOptions = { cache: 'no-store' };
-    
-    const teamsRes = await fetch(`${PB_CONFIG.baseURL}/api/collections/teams/records?perPage=100`, fetchOptions);
-    if(teamsRes.ok) {
-       const teamsData = await teamsRes.json();
-       db_teams = teamsData.items || [];
-    }
-
-    const playersRes = await fetch(`${PB_CONFIG.baseURL}/api/collections/players/records?perPage=500`, fetchOptions);
-    if(playersRes.ok) {
-       const playersData = await playersRes.json();
-       db_players = playersData.items || [];
-    }
-
-    const fixturesRes = await fetch(`${PB_CONFIG.baseURL}/api/collections/fixtures/records?sort=match_date`, fetchOptions);
-    if(fixturesRes.ok) {
-       const fixturesData = await fixturesRes.json();
-       db_fixtures = fixturesData.items || [];
-    }
-
-    const resultsRes = await fetch(`${PB_CONFIG.baseURL}/api/collections/results/records?perPage=100`, fetchOptions);
-    if(resultsRes.ok) {
-       const resultsData = await resultsRes.json();
-       db_results = resultsData.items || [];
-    }
-
-    const supportersRes = await fetch(`${PB_CONFIG.baseURL}/api/collections/supporters/records?sort=-created`, fetchOptions);
-    if(supportersRes.ok) {
-       const supportersData = await supportersRes.json();
-       db_supporters = supportersData.items || [];
-    }
-
-    document.getElementById('stat-players').textContent = db_players.length;
-    renderTeamsPage();
-    setCategoryFilter('All', document.querySelector('.cat-btn.active')); 
-    renderFixturesPage(); 
-    renderResultsPage(); 
-    renderStandingsPage(); 
-    renderSupportersPage();
-    
-    setTimeout(observeElements, 500);
-
-  } catch (error) {
-    console.error("PocketBase Fetch Error:", error);
-    document.getElementById('teams-container').innerHTML = `<div style="grid-column:1/-1; text-align:center; color:var(--accent);">ডেটাবেস কানেক্ট করতে সমস্যা হচ্ছে।</div>`;
-    document.getElementById('players-container').innerHTML = `<div style="grid-column:1/-1; text-align:center; color:var(--accent);">ডেটাবেস কানেক্ট করতে সমস্যা হচ্ছে।</div>`;
-    document.getElementById('fixtures-container').innerHTML = `<div style="text-align:center; color:var(--accent);">ডেটাবেস কানেক্ট করতে সমস্যা হচ্ছে।</div>`;
-    document.getElementById('results-container').innerHTML = `<div style="text-align:center; color:var(--accent);">ডেটাবেস কানেক্ট করতে সমস্যা হচ্ছে।</div>`;
-    document.getElementById('standings-body').innerHTML = `<tr><td colspan="11" style="text-align:center; color:var(--accent);">ডেটাবেস কানেক্ট করতে সমস্যা হচ্ছে।</td></tr>`;
-    document.getElementById('supporters-container').innerHTML = `<div style="grid-column:1/-1; text-align:center; color:var(--accent);">ডেটাবেস কানেক্ট করতে সমস্যা হচ্ছে।</div>`;
-  }
-}
-
-// ==========================================
-// RENDER LOGIC
-// ==========================================
-function renderTeamsPage() {
-  const container = document.getElementById('teams-container');
-  container.innerHTML = '';
-  
-  if (db_teams.length === 0) {
-      container.innerHTML = '<div style="grid-column:1/-1; text-align:center; color:var(--text-muted);">No teams created in database yet.</div>';
-      return;
-  }
-
-  db_teams.forEach(team => {
-    const teamPlayers = db_players.filter(p => getPBLinkedTeamId(p) === team.id);
-    const teamName = team.name || team.crest_text || 'Unnamed Team';
-    
-    const crestBg = team.crest_bg || '#1d4ed8';
-    const safeTextColor = getSafeTextColor(crestBg);
-    const crestTextCol = getSafeCrestTextColor(crestBg);
-    
-    let bannerStyle = `linear-gradient(135deg, ${crestBg}CC, ${crestBg})`;
-    
-    let crestHtml = team.crest_text || 'FC';
-    if (team.banner) {
-        crestHtml = `<img src="${getPbImageUrl(team, team.banner)}" class="crest-img" crossorigin="anonymous">`;
-    }
-
-    container.innerHTML += `
-      <div class="team-card animate-on-scroll" onclick="openTeamModal('${team.id}')">
-        <div class="team-banner" style="background:${bannerStyle}">
-          <div class="team-crest" style="background:${crestBg}; color:${crestTextCol}; border: 4px solid var(--bg-card); ${team.banner ? 'padding:0;' : ''}">
-             ${crestHtml}
-          </div>
-        </div>
-        <div class="team-info">
-          <div class="team-name" style="color:${safeTextColor}">${teamName}</div>
-          <div class="team-meta"><span>Manager: <span class="tbd">${team.manager_name || 'TBD'}</span></span><span>Owner: <span class="tbd">${team.owner_name || 'TBD'}</span></span></div>
-          <div class="team-badge" style="background:${safeTextColor}15;color:${safeTextColor}">Season 4 Entry</div>
-        </div>
-        <div class="team-roster">
-          <span class="roster-tag">${teamPlayers.length > 0 ? teamPlayers.length + ' Players Drafted' : 'Squad to be announced'}</span>
-        </div>
-      </div>
-    `;
-  });
-}
-
-function setCategoryFilter(cat, btnElement) {
-    if(btnElement) {
-        document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-        btnElement.classList.add('active');
-    }
-    currentFilter = cat;
-    renderPlayersPage();
-}
-
-function renderPlayersPage() {
-  const container = document.getElementById('players-container');
-  container.innerHTML = '';
-  
-  // Filtering logic by category AND search query
-  currentFilteredPlayers = db_players.filter(p => {
-      const matchesCat = currentFilter === 'All' ? true : (p.Catagory || p.category || '').trim().toUpperCase() === currentFilter.toUpperCase();
-      const matchesSearch = p.name.toLowerCase().includes(searchQuery);
-      return matchesCat && matchesSearch;
-  });
-
-  if (currentFilteredPlayers.length === 0) {
-    container.innerHTML = '<div style="grid-column: 1/-1; padding: 2rem; text-align: center; color: var(--text-muted); font-size: 13px; border: 1px dashed var(--border); border-radius: 8px;">No players found matching your search.</div>';
-    return;
-  }
-
-  currentFilteredPlayers.forEach(player => {
-    const team = db_teams.find(t => t.id === getPBLinkedTeamId(player));
-    const tName = team ? (team.name || team.crest_text || 'Unnamed Team') : 'Undrafted';
-    
-    let teamBadgeHTML = '';
-    if (team) {
-        const safeTextColor = getSafeTextColor(team.crest_bg || '#000');
-        const crestTextCol = getSafeCrestTextColor(team.crest_bg || '#000');
-        let crestHtml = team.banner ? `<img src="${getPbImageUrl(team, team.banner)}" style="width:14px; height:14px; border-radius:50%; object-fit:cover; display:inline-block; vertical-align:middle;" crossorigin="anonymous">` : `<span style="display:inline-flex; align-items:center; justify-content:center; width:14px; height:14px; border-radius:50%; background:${team.crest_bg}; color:${crestTextCol}; font-size:6px; font-weight:bold;">${team.crest_text || 'FC'}</span>`;
-        
-        teamBadgeHTML = `<div class="player-team-badge" style="background:${safeTextColor}15; color:${safeTextColor}; border: 1px solid ${safeTextColor}40; display:inline-flex; align-items:center; gap:4px; padding: 4px 8px;">${crestHtml} <span>${tName}</span></div>`;
-    } else {
-        teamBadgeHTML = `<div class="player-team-badge" style="background:var(--bg-input); color:var(--text-muted); border: 1px solid var(--border); display:inline-flex; align-items:center; gap:4px; padding: 4px 8px;">Undrafted</div>`;
-    }
-
-    let photoUrl = getPbImageUrl(player, player.photo);
-    
-    let rawCat = (player.Catagory || player.category || '').trim();
-    let catClass = 'cat-None';
-    let displayCat = '';
-    if (/icon/i.test(rawCat)) { displayCat = 'Icon'; catClass = 'cat-Icon'; }
-    else if (/^A$/i.test(rawCat)) { displayCat = 'A'; catClass = 'cat-A'; }
-    else if (/^B$/i.test(rawCat)) { displayCat = 'B'; catClass = 'cat-B'; }
-    else if (/^C$/i.test(rawCat)) { displayCat = 'C'; catClass = 'cat-C'; }
-    else if (/^GK$/i.test(rawCat)) { displayCat = 'GK'; catClass = 'cat-GK'; }
-
-    container.innerHTML += `
-      <div class="player-card animate-on-scroll" style="position: relative;">
-        <!-- Instant Presentation Button -->
-        <button onclick="presentSinglePlayer('${player.id}', event)" class="instant-present-btn" title="Present Player">🖥️</button>
-        
-        <div style="position:relative;" onclick="openPlayerModal('${player.id}')">
-           <img src="${photoUrl}" class="player-photo" alt="${player.name}" crossorigin="anonymous">
-           ${displayCat ? `<div class="cat-badge ${catClass}" style="position:absolute; top:8px; right:8px;">${displayCat}</div>` : ''}
-        </div>
-        <div class="player-info" onclick="openPlayerModal('${player.id}')">
-          <div class="player-name">${player.name}</div>
-          <div class="player-pos">${(player.position || '').split('—')[0]}</div>
-          ${teamBadgeHTML}
-        </div>
-      </div>
-    `;
-  });
-  
-  setTimeout(observeElements, 100);
-}
-
-function renderFixturesPage() {
-  const container = document.getElementById('fixtures-container');
-  
-  if (db_fixtures.length === 0) {
-      container.innerHTML = `
-        <div class="coming-soon-box">
-          <span class="cs-icon" style="font-size: 42px;">⚽</span>
-          <div class="cs-title" style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 20px; margin-top: 10px;">Fixtures Not Yet Scheduled</div>
-        </div>`;
-      return;
-  }
-
-  let html = '<div class="fixture-list">';
-  
-  db_fixtures.forEach(fix => {
-      const team1Id = Array.isArray(fix.team1) ? fix.team1[0] : fix.team1;
-      const team2Id = Array.isArray(fix.team2) ? fix.team2[0] : fix.team2;
-      
-      const t1 = db_teams.find(t => t.id === team1Id) || { name: 'TBD', crest_text: '?', crest_bg: '#94a3b8' };
-      const t2 = db_teams.find(t => t.id === team2Id) || { name: 'TBD', crest_text: '?', crest_bg: '#94a3b8' };
-
-      const t1Name = t1.name || t1.crest_text || 'TBD';
-      const t2Name = t2.name || t2.crest_text || 'TBD';
-      
-      const t1CrestTextCol = getSafeCrestTextColor(t1.crest_bg);
-      const t2CrestTextCol = getSafeCrestTextColor(t2.crest_bg);
-      
-      let t1CrestHtml = t1.banner ? `<img src="${getPbImageUrl(t1, t1.banner)}" class="crest-img" crossorigin="anonymous">` : (t1.crest_text || '?');
-      let t2CrestHtml = t2.banner ? `<img src="${getPbImageUrl(t2, t2.banner)}" class="crest-img" crossorigin="anonymous">` : (t2.crest_text || '?');
-
-      let scoreDisplay = `<div class="fixture-vs">VS</div>`;
-      let dateStr = 'TBA';
-      if (fix.match_date) {
-          const d = new Date(fix.match_date);
-          dateStr = d.toLocaleString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute:'2-digit' });
-      }
-
-      let isLiveHtml = '';
-      if (fix.is_live === true || fix.is_live === 'true') {
-          isLiveHtml = `<div class="live-badge" onclick="playLiveStream()">🔴 Watch Live</div>`;
-      }
-
-      html += `
-      <div class="fixture-card animate-on-scroll">
-          <div class="fixture-header">
-              <span>${fix.match_type || 'League Match'}</span>
-              <span>${dateStr}</span>
-          </div>
-          <div class="fixture-body">
-              <div class="fixture-team">
-                  <div class="fixture-crest" style="background:${t1.crest_bg}; color:${t1CrestTextCol}; ${t1.banner ? 'padding:0; border:2px solid transparent;' : ''}">${t1CrestHtml}</div>
-                  <div class="fixture-tname">${t1Name}</div>
-              </div>
-              <div class="fixture-center">
-                  <div style="margin-top: 8px;">${scoreDisplay}</div>
-                  ${isLiveHtml}
-              </div>
-              <div class="fixture-team away">
-                  <div class="fixture-crest" style="background:${t2.crest_bg}; color:${t2CrestTextCol}; ${t2.banner ? 'padding:0; border:2px solid transparent;' : ''}">${t2CrestHtml}</div>
-                  <div class="fixture-tname">${t2Name}</div>
-              </div>
-          </div>
-      </div>`;
-  });
-  
-  html += '</div>';
-  container.innerHTML = html;
-  setTimeout(observeElements, 100);
-}
-
-// ==========================================
-// RESULTS & STATS LOGIC 
-// ==========================================
-function renderResultsPage() {
-  const resultsContainer = document.getElementById('results-container');
-  const topScorersContainer = document.getElementById('top-scorers-container');
-  
-  if (db_results.length === 0) {
-      resultsContainer.innerHTML = `
-        <div class="coming-soon-box" style="padding: 3rem 2rem;">
-          <span class="cs-icon" style="font-size: 32px;">🏆</span>
-          <div class="cs-title" style="font-size: 16px; margin-top: 8px;">No results published yet.</div>
-        </div>`;
-      topScorersContainer.innerHTML = '<div style="text-align: center; color: var(--text-muted); font-size: 13px; padding: 2rem 0;">Stats will update once matches are played.</div>';
-      return;
-  }
-
-  let resultsHtml = '<div class="fixture-list">';
-  let playerGoalsMap = {}; 
-
-  db_results.forEach(res => {
-      const fixtureId = Array.isArray(res.fixture) ? res.fixture[0] : res.fixture;
-      const fixture = db_fixtures.find(f => f.id === fixtureId);
-      
-      if (!fixture) {
-          console.warn("Skipping a result record because Fixture is missing or unlinked: ", res);
-          return;
-      }
-
-      const team1Id = Array.isArray(fixture.team1) ? fixture.team1[0] : fixture.team1;
-      const team2Id = Array.isArray(fixture.team2) ? fixture.team2[0] : fixture.team2;
-      
-      const t1 = db_teams.find(t => t.id === team1Id) || { name: 'TBD', crest_text: '?', crest_bg: '#94a3b8' };
-      const t2 = db_teams.find(t => t.id === team2Id) || { name: 'TBD', crest_text: '?', crest_bg: '#94a3b8' };
-
-      const t1Name = t1.name || t1.crest_text || 'TBD';
-      const t2Name = t2.name || t2.crest_text || 'TBD';
-
-      const t1CrestTextCol = getSafeCrestTextColor(t1.crest_bg);
-      const t2CrestTextCol = getSafeCrestTextColor(t2.crest_bg);
-
-      let t1CrestHtml = t1.banner ? `<img src="${getPbImageUrl(t1, t1.banner)}" class="crest-img" crossorigin="anonymous">` : (t1.crest_text || '?');
-      let t2CrestHtml = t2.banner ? `<img src="${getPbImageUrl(t2, t2.banner)}" class="crest-img" crossorigin="anonymous">` : (t2.crest_text || '?');
-
-      const score1 = parseInt(res.team1_score !== undefined ? res.team1_score : res.t1_score) || 0;
-      const score2 = parseInt(res.team2_score !== undefined ? res.team2_score : res.t2_score) || 0;
-
-      let t1ScorersRaw = extractScorers(res, 't1');
-      let t1Counts = {};
-      t1ScorersRaw.forEach(val => { 
-          if(val) {
-              let strVal = String(val).trim();
-              if (strVal !== '' && strVal.toLowerCase() !== 'n/a') {
-                  t1Counts[strVal] = (t1Counts[strVal] || 0) + 1; 
-              }
-          }
-      });
-
-      let t1ScorersUI = [];
-      Object.keys(t1Counts).forEach(playerRef => {
-          const player = db_players.find(p => p.id === playerRef || (p.name && p.name.toLowerCase() === String(playerRef).toLowerCase()));
-          let goalsScored = t1Counts[playerRef];
-          let suffix = goalsScored > 1 ? ` (${goalsScored})` : '';
-
-          if (player) {
-              const playerRealTeam = getPBLinkedTeamId(player);
-              if (playerRealTeam === t1.id) {
-                  playerGoalsMap[player.id] = (playerGoalsMap[player.id] || 0) + goalsScored;
-                  t1ScorersUI.push(`<span>⚽ ${player.name}${suffix}</span>`);
-              } else {
-                  t1ScorersUI.push(`<span class="scorer-item-og">⚽ ${player.name} (og)${suffix}</span>`);
-              }
-          } else {
-              t1ScorersUI.push(`<span>⚽ ${playerRef}${suffix}</span>`);
-          }
-      });
-
-      let t2ScorersRaw = extractScorers(res, 't2');
-      let t2Counts = {};
-      t2ScorersRaw.forEach(val => { 
-          if(val) {
-              let strVal = String(val).trim();
-              if (strVal !== '' && strVal.toLowerCase() !== 'n/a') {
-                  t2Counts[strVal] = (t2Counts[strVal] || 0) + 1; 
-              }
-          }
-      });
-
-      let t2ScorersUI = [];
-      Object.keys(t2Counts).forEach(playerRef => {
-          const player = db_players.find(p => p.id === playerRef || (p.name && p.name.toLowerCase() === String(playerRef).toLowerCase()));
-          let goalsScored = t2Counts[playerRef];
-          let suffix = goalsScored > 1 ? ` (${goalsScored})` : '';
-
-          if (player) {
-              const playerRealTeam = getPBLinkedTeamId(player);
-              if (playerRealTeam === t2.id) {
-                  playerGoalsMap[player.id] = (playerGoalsMap[player.id] || 0) + goalsScored;
-                  t2ScorersUI.push(`<span>${player.name}${suffix} ⚽</span>`);
-              } else {
-                  t2ScorersUI.push(`<span class="scorer-item-og">${player.name} (og)${suffix} ⚽</span>`);
-              }
-          } else {
-              t2ScorersUI.push(`<span>${playerRef}${suffix} ⚽</span>`);
-          }
-      });
-
-      let highlightHtml = '';
-      if (res.highlight) {
-          let highlightUrl = getPbImageUrl(res, res.highlight);
-          highlightHtml = `<button class="highlight-btn" onclick="playHighlight('${highlightUrl}')">▶️ Watch Highlights</button>`;
-      }
-
-      // 🏅 Player of the Match logic
-      let motmId = res.motm || res.potm;
-      let motmHtml = '';
-      if (motmId) {
-          let id = Array.isArray(motmId) ? motmId[0] : motmId;
-          let motmPlayer = db_players.find(p => p.id === id || (p.name && p.name.toLowerCase() === String(id).toLowerCase()));
-          if (motmPlayer) {
-              let motmPhoto = getPbImageUrl(motmPlayer, motmPlayer.photo);
-              motmHtml = `
-              <div style="width: 100%; display: flex; justify-content: center; margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--border);">
-                  <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3); padding: 4px 12px; border-radius: 20px;">
-                      <span style="font-size: 14px;">🏅</span>
-                      <span style="font-size: 10px; font-weight: 800; color: #B45309; text-transform: uppercase; letter-spacing: 0.5px;">Player of the Match:</span>
-                      <img src="${motmPhoto}" style="width: 20px; height: 20px; border-radius: 50%; object-fit: cover; border: 1px solid #B45309;" crossorigin="anonymous">
-                      <span style="font-size: 12px; font-weight: 700; color: var(--text-main);">${motmPlayer.name}</span>
-                  </div>
-              </div>`;
-          }
-      }
-
-      resultsHtml += `
-      <div class="fixture-card animate-on-scroll">
-          <div class="fixture-header">
-              <span>${fixture.match_type || 'Match Result'}</span>
-              <span style="color:var(--brand);">Full Time</span>
-          </div>
-          <div class="fixture-body" style="align-items: flex-start;">
-              <div class="fixture-team" style="flex-direction: column; align-items: flex-start;">
-                  <div style="display: flex; align-items: center; gap: 12px;">
-                      <div class="fixture-crest" style="background:${t1.crest_bg}; color:${t1CrestTextCol}; ${t1.banner ? 'padding:0; border:2px solid transparent;' : ''}">${t1CrestHtml}</div>
-                      <div class="fixture-tname">${t1Name}</div>
-                  </div>
-                  <div class="result-scorer-list">
-                      ${t1ScorersUI.join('')}
-                  </div>
-              </div>
-              <div class="fixture-center">
-                  <div class="fixture-score">${score1} - ${score2}</div>
-              </div>
-              <div class="fixture-team away" style="flex-direction: column; align-items: flex-end;">
-                  <div style="display: flex; align-items: center; gap: 12px; flex-direction: row-reverse;">
-                      <div class="fixture-crest" style="background:${t2.crest_bg}; color:${t2CrestTextCol}; ${t2.banner ? 'padding:0; border:2px solid transparent;' : ''}">${t2CrestHtml}</div>
-                      <div class="fixture-tname">${t2Name}</div>
-                  </div>
-                  <div class="result-scorer-list right">
-                      ${t2ScorersUI.join('')}
-                  </div>
-              </div>
-          </div>
-          
-          ${motmHtml} <!-- Player of the match UI -->
-          
-          <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-top:8px;">
-              ${highlightHtml}
-              <button class="export-btn" onclick="downloadMatchCard('${res.id}')">
-                 ⬇️ Download Result Card
-              </button>
-          </div>
-      </div>`;
-  });
-  
-  resultsHtml += '</div>';
-  resultsContainer.innerHTML = resultsHtml;
-
-  const topScorersArr = Object.entries(playerGoalsMap)
-      .map(([id, count]) => ({ player: db_players.find(p => p.id === id), goals: count }))
-      .filter(item => item.player) 
-      .sort((a, b) => b.goals - a.goals)
-      .slice(0, 5); 
-
-  if (topScorersArr.length === 0) {
-      topScorersContainer.innerHTML = '<div style="text-align: center; color: var(--text-muted); font-size: 13px; padding: 2rem 0;">No goals scored yet.</div>';
-  } else {
-      let topScorersHtml = '';
-      topScorersArr.forEach((item, index) => {
-          const p = item.player;
-          const team = db_teams.find(t => t.id === getPBLinkedTeamId(p));
-          const pTeamName = team ? (team.name || team.crest_text || 'Unnamed') : 'Undrafted';
-          let photoUrl = getPbImageUrl(p, p.photo);
-
-          topScorersHtml += `
-          <div class="top-scorer-card animate-on-scroll">
-             <div class="ts-rank">#${index + 1}</div>
-             <img src="${photoUrl}" class="ts-photo" crossorigin="anonymous">
-             <div class="ts-info">
-                <div class="ts-name">${p.name}</div>
-                <div class="ts-team">${pTeamName}</div>
-             </div>
-             <div class="ts-goals">${item.goals} <span style="font-size: 10px; color:var(--text-muted);">Goals</span></div>
-          </div>`;
-      });
-      topScorersContainer.innerHTML = topScorersHtml;
-  }
-  
-  setTimeout(observeElements, 100);
-}
-
-// ==========================================
-// STANDINGS (POINTS TABLE) LOGIC 
-// ==========================================
-function renderStandingsPage() {
-    const tbody = document.getElementById('standings-body');
-    
-    if (db_teams.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="11" style="text-align:center; color:var(--text-muted);">No teams available.</td></tr>`;
-        return;
-    }
-
-    let standings = {};
-    db_teams.forEach(team => {
-        standings[team.id] = {
-            id: team.id,
-            team: team,
-            P: 0, W: 0, D: 0, L: 0, GF: 0, GA: 0, GD: 0, Pts: 0,
-            formMatches: []
-        };
-    });
-
-    db_results.forEach(res => {
-        const fixtureId = Array.isArray(res.fixture) ? res.fixture[0] : res.fixture;
-        const fixture = db_fixtures.find(f => f.id === fixtureId);
-        if (!fixture) return;
-
-        const t1Id = Array.isArray(fixture.team1) ? fixture.team1[0] : fixture.team1;
-        const t2Id = Array.isArray(fixture.team2) ? fixture.team2[0] : fixture.team2;
-        
-        if (!standings[t1Id] || !standings[t2Id]) return;
-
-        const score1 = parseInt(res.team1_score !== undefined ? res.team1_score : res.t1_score) || 0;
-        const score2 = parseInt(res.team2_score !== undefined ? res.team2_score : res.t2_score) || 0;
-
-        standings[t1Id].P += 1;
-        standings[t2Id].P += 1;
-
-        standings[t1Id].GF += score1;
-        standings[t1Id].GA += score2;
-        standings[t2Id].GF += score2;
-        standings[t2Id].GA += score1;
-
-        let outcome1, outcome2;
-        if (score1 > score2) {
-            standings[t1Id].W += 1; standings[t1Id].Pts += 3;
-            standings[t2Id].L += 1;
-            outcome1 = 'W'; outcome2 = 'L';
-        } else if (score2 > score1) {
-            standings[t2Id].W += 1; standings[t2Id].Pts += 3;
-            standings[t1Id].L += 1;
-            outcome1 = 'L'; outcome2 = 'W';
-        } else {
-            standings[t1Id].D += 1; standings[t1Id].Pts += 1;
-            standings[t2Id].D += 1; standings[t2Id].Pts += 1;
-            outcome1 = 'D'; outcome2 = 'D';
-        }
-        
-        let matchDate = fixture.match_date ? new Date(fixture.match_date).getTime() : 0;
-        standings[t1Id].formMatches.push({ outcome: outcome1, date: matchDate });
-        standings[t2Id].formMatches.push({ outcome: outcome2, date: matchDate });
-    });
-
-    let standingsArr = Object.values(standings);
-    standingsArr.forEach(teamStats => {
-        teamStats.GD = teamStats.GF - teamStats.GA;
-    });
-
-    standingsArr.sort((a, b) => {
-        if (b.Pts !== a.Pts) return b.Pts - a.Pts;
-        if (b.GD !== a.GD) return b.GD - a.GD;
-        return b.GF - a.GF;
-    });
-
-    let html = '';
-    standingsArr.forEach((stats, index) => {
-        const team = stats.team;
-        const crestBg = team.crest_bg || '#1d4ed8';
-        const crestTextCol = getSafeCrestTextColor(crestBg);
-        const rankClass = index === 0 ? 'top-team' : '';
-        const teamName = team.name || team.crest_text || 'Unnamed Team';
-
-        const gdDisplay = stats.GD > 0 ? `+${stats.GD}` : stats.GD;
-        let crestHtml = team.banner ? `<img src="${getPbImageUrl(team, team.banner)}" class="crest-img" crossorigin="anonymous">` : (team.crest_text || 'FC');
-
-        let formHtml = stats.formMatches
-            .sort((a, b) => a.date - b.date) 
-            .slice(-5)                       
-            .map(f => {
-                if (f.outcome === 'W') return `<span class="form-icon form-w">✓</span>`;
-                if (f.outcome === 'D') return `<span class="form-icon form-d">-</span>`;
-                if (f.outcome === 'L') return `<span class="form-icon form-l">✗</span>`;
-            }).join('');
-            
-        if (!formHtml) formHtml = `<span style="color:var(--text-muted); font-size:11px; font-weight:600;">N/A</span>`;
-
-        html += `
-        <tr class="${rankClass}">
-            <td><div class="st-rank">${index + 1}</div></td>
-            <td class="st-team-cell">
-                <div class="st-crest" style="background:${crestBg}; color:${crestTextCol}; ${team.banner ? 'padding:0; border:1px solid transparent;' : ''}">${crestHtml}</div>
-                <div class="st-name">${teamName}</div>
-            </td>
-            <td>${stats.P}</td>
-            <td>${stats.W}</td>
-            <td>${stats.D}</td>
-            <td>${stats.L}</td>
-            <td class="hide-mobile">${stats.GF}</td>
-            <td class="hide-mobile">${stats.GA}</td>
-            <td style="font-weight: 800;">${gdDisplay}</td>
-            <td><span class="st-pts">${stats.Pts}</span></td>
-            <td><div style="display:inline-flex; gap:4px; min-width:90px; justify-content:center;">${formHtml}</div></td>
-        </tr>`;
-    });
-
-    document.getElementById('standings-body').innerHTML = html;
-}
-
-function downloadStandings() {
-    const tableArea = document.getElementById('standings-export-area');
-    const header = document.getElementById('standings-export-header');
-    const footer = document.getElementById('standings-export-footer');
-    
-    header.style.display = 'block';
-    footer.style.display = 'block';
-    tableArea.style.border = 'none';
-    tableArea.style.boxShadow = 'none';
-
-    html2canvas(tableArea, { scale: 2, useCORS: true, backgroundColor: '#FFFFFF' }).then(canvas => {
-        const link = document.createElement('a');
-        link.download = `EFL_S4_Points_Table.png`;
-        link.href = canvas.toDataURL('image/png');
-        link.click();
-        
-        header.style.display = 'none';
-        footer.style.display = 'none';
-        tableArea.style.border = '';
-        tableArea.style.boxShadow = '';
-    });
-}
-
-function downloadMatchCard(resultId) {
-    const res = db_results.find(r => r.id === resultId);
-    if (!res) return;
-
-    const fixtureId = Array.isArray(res.fixture) ? res.fixture[0] : res.fixture;
-    const fixture = db_fixtures.find(f => f.id === fixtureId);
-    if (!fixture) return;
-
-    const team1Id = Array.isArray(fixture.team1) ? fixture.team1[0] : fixture.team1;
-    const team2Id = Array.isArray(fixture.team2) ? fixture.team2[0] : fixture.team2;
-    
-    const t1 = db_teams.find(t => t.id === team1Id) || { name: 'T1', crest_text: 'T1', crest_bg: '#111827' };
-    const t2 = db_teams.find(t => t.id === team2Id) || { name: 'T2', crest_text: 'T2', crest_bg: '#111827' };
-
-    const t1Name = t1.name || t1.crest_text || 'T1';
-    const t2Name = t2.name || t2.crest_text || 'T2';
-
-    document.getElementById('erc-t1-crest').style.background = t1.crest_bg;
-    document.getElementById('erc-t1-crest').style.color = getSafeCrestTextColor(t1.crest_bg);
-    let t1CrestHtml = t1.banner ? `<img src="${getPbImageUrl(t1, t1.banner)}" class="crest-img" crossorigin="anonymous">` : (t1.crest_text || 'T1');
-    document.getElementById('erc-t1-crest').innerHTML = t1CrestHtml;
-    if(t1.banner) document.getElementById('erc-t1-crest').style.padding = '0';
-    document.getElementById('erc-t1-name').textContent = t1Name;
-    document.getElementById('erc-t1-score').textContent = parseInt(res.team1_score !== undefined ? res.team1_score : res.t1_score) || 0;
-
-    document.getElementById('erc-t2-crest').style.background = t2.crest_bg;
-    document.getElementById('erc-t2-crest').style.color = getSafeCrestTextColor(t2.crest_bg);
-    let t2CrestHtml = t2.banner ? `<img src="${getPbImageUrl(t2, t2.banner)}" class="crest-img" crossorigin="anonymous">` : (t2.crest_text || 'T2');
-    document.getElementById('erc-t2-crest').innerHTML = t2CrestHtml;
-    if(t2.banner) document.getElementById('erc-t2-crest').style.padding = '0';
-    document.getElementById('erc-t2-name').textContent = t2Name;
-    document.getElementById('erc-t2-score').textContent = parseInt(res.team2_score !== undefined ? res.team2_score : res.t2_score) || 0;
-
-    let t1ScorersRaw = extractScorers(res, 't1');
-    let t1Counts = {};
-    t1ScorersRaw.forEach(val => { 
-        if(val) {
-            let strVal = String(val).trim();
-            if (strVal !== '' && strVal.toLowerCase() !== 'n/a') t1Counts[strVal] = (t1Counts[strVal] || 0) + 1; 
-        }
-    });
-
-    let t1ScorersHtml = '';
-    Object.keys(t1Counts).forEach(playerRef => {
-        const player = db_players.find(p => p.id === playerRef || (p.name && p.name.toLowerCase() === String(playerRef).toLowerCase()));
-        let goalsScored = t1Counts[playerRef];
-        let suffix = goalsScored > 1 ? ` (${goalsScored})` : '';
-
-        if (player) {
-            const playerRealTeam = getPBLinkedTeamId(player);
-            if (playerRealTeam === t1.id) t1ScorersHtml += `<div>⚽ ${player.name}${suffix}</div>`;
-            else t1ScorersHtml += `<div style="color: #f87171; font-style:italic;">⚽ ${player.name} (og)${suffix}</div>`;
-        } else {
-            t1ScorersHtml += `<div>⚽ ${playerRef}${suffix}</div>`;
-        }
-    });
-    document.getElementById('erc-t1-scorers').innerHTML = t1ScorersHtml;
-
-    let t2ScorersRaw = extractScorers(res, 't2');
-    let t2Counts = {};
-    t2ScorersRaw.forEach(val => { 
-        if(val) {
-            let strVal = String(val).trim();
-            if (strVal !== '' && strVal.toLowerCase() !== 'n/a') t2Counts[strVal] = (t2Counts[strVal] || 0) + 1; 
-        }
-    });
-
-    let t2ScorersHtml = '';
-    Object.keys(t2Counts).forEach(playerRef => {
-        const player = db_players.find(p => p.id === playerRef || (p.name && p.name.toLowerCase() === String(playerRef).toLowerCase()));
-        let goalsScored = t2Counts[playerRef];
-        let suffix = goalsScored > 1 ? ` (${goalsScored})` : '';
-
-        if (player) {
-            const playerRealTeam = getPBLinkedTeamId(player);
-            if (playerRealTeam === t2.id) t2ScorersHtml += `<div>${player.name}${suffix} ⚽</div>`;
-            else t2ScorersHtml += `<div style="color: #f87171; font-style:italic;">${player.name} (og)${suffix} ⚽</div>`;
-        } else {
-            t2ScorersHtml += `<div>${playerRef}${suffix} ⚽</div>`;
-        }
-    });
-    document.getElementById('erc-t2-scorers').innerHTML = t2ScorersHtml;
-
-    // Export Card MOTM Update
-    let motmId = res.motm || res.potm;
-    let motmContainer = document.getElementById('erc-motm-container');
-    if (motmId) {
-        let id = Array.isArray(motmId) ? motmId[0] : motmId;
-        let motmPlayer = db_players.find(p => p.id === id || (p.name && p.name.toLowerCase() === String(id).toLowerCase()));
-        if (motmPlayer) {
-            document.getElementById('erc-motm-photo').src = getPbImageUrl(motmPlayer, motmPlayer.photo);
-            document.getElementById('erc-motm-name').textContent = motmPlayer.name;
-            motmContainer.style.display = 'block';
-        } else {
-            motmContainer.style.display = 'none';
-        }
-    } else {
-        motmContainer.style.display = 'none';
-    }
-
-    const cardEl = document.getElementById('export-result-card');
-    cardEl.parentElement.style.top = "0";
-    cardEl.parentElement.style.zIndex = "-1";
-    
-    html2canvas(cardEl, { scale: 2, useCORS: true, backgroundColor: null }).then(canvas => {
-        const link = document.createElement('a');
-        link.download = `EFL_S4_Result_${t1Name}_vs_${t2Name}.png`;
-        link.href = canvas.toDataURL('image/png');
-        link.click();
-        cardEl.parentElement.style.top = "-10000px";
-    });
-}
-
-// ==========================================
-// SUPPORTERS / DONORS LOGIC
-// ==========================================
-function renderSupportersPage() {
-    const container = document.getElementById('supporters-container');
-    container.innerHTML = '';
-    
-    if(db_supporters.length === 0) {
-        container.innerHTML = '<div style="grid-column: 1/-1; padding: 4rem 2rem; text-align: center; color: var(--text-muted); font-size: 13px; border: 1px dashed var(--border); border-radius: 12px; background: var(--bg-card);">No supporters have been added yet.</div>';
-        return;
-    }
-
-    db_supporters.forEach(sup => {
-        let photoUrl = getPbImageUrl(sup, sup.photo);
-        
-        let sName = sup.name || sup.NAME || sup.Name || 'Anonymous';
-        let sBatch = sup.batch || sup.Batch || sup.BATCH || '';
-        let sMessage = sup.message || sup.Message || '';
-        let sConsent = sup.publish_consent === true || sup.Publish_consent === true || sup.publish_consent === 'true';
-
-        let msgHtml = '';
-        if (sConsent && sMessage.trim() !== '') {
-            msgHtml = `<div style="font-size: 12px; color: var(--text-muted); margin-top: 12px; font-style: italic; line-height: 1.5; padding: 10px; background: rgba(0,0,0,0.02); border-radius: 8px; border: 1px solid var(--border);">"${sMessage.trim()}"</div>`;
-        }
-
-        container.innerHTML += `
-            <div class="supporter-card animate-on-scroll">
-                <img src="${photoUrl}" class="supporter-photo" alt="${sName}" crossorigin="anonymous">
-                <div class="supporter-name">${sName}</div>
-                <div class="supporter-batch">Batch: ${sBatch}</div>
-                ${msgHtml}
-                <div class="supporter-badge">⭐ EFL Supporter</div>
-            </div>
-        `;
-    });
-    setTimeout(observeElements, 100);
-}
-
-// ==========================================
-// AUCTION PRESENTATION LOGIC
-// ==========================================
-function startAuctionMode() {
-    if(currentFilteredPlayers.length === 0) {
-        alert("No players available to present in the selected category/search.");
-        return;
-    }
-    auctionIndex = 0;
-    updateAuctionModal();
-    showModal('auctionModal');
-}
-
-function presentSinglePlayer(playerId, event) {
-    event.stopPropagation(); 
-    
-    let idx = currentFilteredPlayers.findIndex(p => p.id === playerId);
-    
-    if (idx === -1) {
-       currentFilteredPlayers = [db_players.find(p => p.id === playerId)];
-       idx = 0;
-    }
-    
-    auctionIndex = idx;
-    updateAuctionModal();
-    showModal('auctionModal');
-}
-
-function updateAuctionModal() {
-    const p = currentFilteredPlayers[auctionIndex];
-    document.getElementById('auc-photo').src = getPbImageUrl(p, p.photo);
-    document.getElementById('auc-name').textContent = p.name;
-    document.getElementById('auc-pos').textContent = p.position;
-    document.getElementById('auc-batch').textContent = "Batch: " + p.batch;
-    
-    let rawCat = (p.Catagory || p.category || '').trim().toUpperCase();
-    let displayCat = '';
-    if (rawCat === 'ICON') displayCat = 'ICON';
-    else if (rawCat === 'A') displayCat = 'CATEGORY A';
-    else if (rawCat === 'B') displayCat = 'CATEGORY B';
-    else if (rawCat === 'C') displayCat = 'CATEGORY C';
-    else if (rawCat === 'GK') displayCat = 'GOALKEEPER';
-
-    document.getElementById('auc-cat').textContent = displayCat ? displayCat : "UNCATEGORIZED";
-    document.getElementById('auc-counter').textContent = (auctionIndex + 1) + " / " + currentFilteredPlayers.length;
-    document.getElementById('auc-prev-btn').disabled = (auctionIndex === 0);
-    document.getElementById('auc-next-btn').disabled = (auctionIndex === currentFilteredPlayers.length - 1);
-}
-
-function nextAuction() {
-    if(auctionIndex < currentFilteredPlayers.length - 1) {
-        auctionIndex++;
-        updateAuctionModal();
-    }
-}
-
-function prevAuction() {
-    if(auctionIndex > 0) {
-        auctionIndex--;
-        updateAuctionModal();
-    }
-}
-
-// ==========================================
-// MODAL LOGIC
-// ==========================================
-function openTeamModal(teamId) {
-  const team = db_teams.find(t => t.id === teamId);
-  if (!team) return;
-
-  const teamName = team.name || team.crest_text || 'Unnamed Team';
-  const crestBg = team.crest_bg || '#1d4ed8';
-  const safeTextColor = getSafeTextColor(crestBg);
-  const crestTextCol = getSafeCrestTextColor(crestBg);
-  let bannerStyle = `linear-gradient(135deg, ${crestBg}CC, ${crestBg})`;
-
-  document.getElementById('tm-banner').style.background = bannerStyle;
-  document.getElementById('tm-crest').style.background = crestBg;
-  document.getElementById('tm-crest').style.color = crestTextCol;
-  
-  if (team.banner) {
-      document.getElementById('tm-crest').innerHTML = `<img src="${getPbImageUrl(team, team.banner)}" class="crest-img" crossorigin="anonymous">`;
-      document.getElementById('tm-crest').style.padding = '0';
-  } else {
-      document.getElementById('tm-crest').innerHTML = team.crest_text || 'FC';
-      document.getElementById('tm-crest').style.padding = '';
-  }
-  
-  document.getElementById('tm-name').textContent = teamName;
-  document.getElementById('tm-name').style.color = safeTextColor; 
-  
-  document.getElementById('tm-manager').textContent = team.manager_name || 'TBD';
-  const mgrImg = document.getElementById('tm-manager-img');
-  if(team.manager_photo) { mgrImg.src = getPbImageUrl(team, team.manager_photo); mgrImg.style.display = 'block'; } else { mgrImg.style.display = 'none'; }
-
-  document.getElementById('tm-owner').textContent = team.owner_name || 'TBD';
-  const ownImg = document.getElementById('tm-owner-img');
-  if(team.owner_photo) { ownImg.src = getPbImageUrl(team, team.owner_photo); ownImg.style.display = 'block'; } else { ownImg.style.display = 'none'; }
-
-  const playerContainer = document.getElementById('tm-players');
-  playerContainer.innerHTML = ''; 
-  const teamPlayers = db_players.filter(p => getPBLinkedTeamId(p) === team.id);
-
-  if (teamPlayers.length === 0) {
-    playerContainer.innerHTML = '<div style="grid-column: 1/-1; padding: 2rem; text-align: center; color: var(--text-muted); font-size: 13px; border: 1px dashed var(--border); border-radius: 8px;">Squad members have not been drafted yet. Check back later!</div>';
-  } else {
-    teamPlayers.forEach(p => {
-      let photoUrl = getPbImageUrl(p, p.photo);
-      playerContainer.innerHTML += `
-        <div class="player-card-sm" onclick="openPlayerModal('${p.id}'); event.stopPropagation();">
-          <img src="${photoUrl}" class="player-photo-sm" alt="${p.name}" crossorigin="anonymous">
-          <div class="player-info-sm">
-            <div class="player-name-sm">${p.name}</div>
-            <div class="player-pos-sm" style="color: ${safeTextColor}">${(p.position||'').split('—')[0]}</div>
-          </div>
-        </div>
-      `;
-    });
-  }
-  showModal('teamModal');
-}
-
-function openPlayerModal(playerId) {
-  const player = db_players.find(p => p.id === playerId);
-  if (!player) return;
-
-  let photoUrl = getPbImageUrl(player, player.photo);
-
-  document.getElementById('pm-photo').src = photoUrl;
-  document.getElementById('pm-name').textContent = player.name;
-  document.getElementById('pm-pos').textContent = player.position;
-  document.getElementById('pm-batch').textContent = player.batch;
-  document.getElementById('pm-exp').textContent = player.experience || "No experience details provided.";
-
-  const catBadge = document.getElementById('pm-cat-badge');
-  
-  let rawCat = (player.Catagory || player.category || '').trim();
-  let catClass = 'cat-None';
-  let displayCat = '';
-  if (/icon/i.test(rawCat)) { displayCat = 'Icon'; catClass = 'cat-Icon'; }
-  else if (/^A$/i.test(rawCat)) { displayCat = 'A'; catClass = 'cat-A'; }
-  else if (/^B$/i.test(rawCat)) { displayCat = 'B'; catClass = 'cat-B'; }
-  else if (/^C$/i.test(rawCat)) { displayCat = 'C'; catClass = 'cat-C'; }
-  else if (/^GK$/i.test(rawCat)) { displayCat = 'GK'; catClass = 'cat-GK'; }
-
-  if (displayCat) {
-     catBadge.textContent = "Category: " + displayCat;
-     catBadge.className = "cat-badge " + catClass;
-     catBadge.style.display = "inline-block";
-  } else {
-     catBadge.style.display = "none";
-  }
-
-  const team = db_teams.find(t => t.id === getPBLinkedTeamId(player));
-  const teamBox = document.getElementById('pm-team-box');
-  
-  if (team) {
-    const teamName = team.name || team.crest_text || 'Unnamed Team';
-    const safeTextColor = getSafeTextColor(team.crest_bg || '#6366f1');
-    const crestTextCol = getSafeCrestTextColor(team.crest_bg || '#6366f1');
-    
-    let crestHtml = team.banner ? `<img src="${getPbImageUrl(team, team.banner)}" style="width:20px; height:20px; border-radius:50%; object-fit:cover; display:inline-block; vertical-align:middle; margin-right:6px;" crossorigin="anonymous">` : `<span style="display:inline-flex; align-items:center; justify-content:center; width:20px; height:20px; border-radius:50%; background:${team.crest_bg || '#1d4ed8'}; color:${crestTextCol}; font-size:8px; font-weight:bold; margin-right:6px;">${team.crest_text || 'FC'}</span>`;
-    
-    teamBox.style.display = 'block';
-    teamBox.style.borderColor = safeTextColor;
-    teamBox.style.background = `${safeTextColor}15`;
-    document.getElementById('pm-team').innerHTML = crestHtml + `<span style="vertical-align:middle;">${teamName}</span>`;
-    document.getElementById('pm-team').style.color = safeTextColor;
-  } else {
-    teamBox.style.display = 'none';
-  }
-  showModal('playerModal');
-}
-
-function showModal(modalId) {
-  const modal = document.getElementById(modalId);
-  modal.style.display = 'flex';
-  setTimeout(() => {
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden'; 
-  }, 10);
-}
-
-function closeModal(modalId, event) {
-  if (event && event.target !== document.getElementById(modalId)) return;
-  const modal = document.getElementById(modalId);
-  modal.classList.remove('active');
-  document.body.style.overflow = '';
-  setTimeout(() => { modal.style.display = 'none'; }, 300);
-}
-
-// ==========================================
-// VIDEO PLAYER LOGIC (HLS LIVE, OVERLAY & HIGHLIGHTS)
-// ==========================================
-function renderScoreboardUI(fixture) {
-    const sb = document.getElementById('tv-scoreboard');
-    if(!sb) return;
-
-    const t1Id = Array.isArray(fixture.team1) ? fixture.team1[0] : fixture.team1;
-    const t2Id = Array.isArray(fixture.team2) ? fixture.team2[0] : fixture.team2;
-    
-    const t1 = db_teams.find(t => t.id === t1Id) || {};
-    const t2 = db_teams.find(t => t.id === t2Id) || {};
-
-    let t1Short = t1.short_name ? t1.short_name.substring(0,4) : (t1.name ? t1.name.substring(0,3) : 'T1');
-    let t2Short = t2.short_name ? t2.short_name.substring(0,4) : (t2.name ? t2.name.substring(0,3) : 'T2');
-
-    let t1Crest = t1.banner ? `<img src="${getPbImageUrl(t1, t1.banner)}" style="width:100%;height:100%;object-fit:cover;" crossorigin="anonymous">` : (t1.crest_text || 'T1');
-    let t2Crest = t2.banner ? `<img src="${getPbImageUrl(t2, t2.banner)}" style="width:100%;height:100%;object-fit:cover;" crossorigin="anonymous">` : (t2.crest_text || 'T2');
-
-    let score1 = fixture.live_score_t1 || 0;
-    let score2 = fixture.live_score_t2 || 0;
-
-    // Dynamic Team Colors
-    let bg1 = t1.crest_bg || 'rgba(15, 23, 42, 0.85)';
-    let bg2 = t2.crest_bg || 'rgba(15, 23, 42, 0.85)';
-    let color1 = getSafeCrestTextColor(t1.crest_bg || '#0f172a');
-    let color2 = getSafeCrestTextColor(t2.crest_bg || '#0f172a');
-
-    sb.innerHTML = `
-        <div class="sb-wrapper">
-            <div class="sb-team" style="background: ${bg1}; color: ${color1};">
-                <div class="sb-crest">${t1Crest}</div>
-                <div class="sb-team-name">${t1Short}</div>
-            </div>
-            <div class="sb-score-box">
-                <span id="live-s1">${score1}</span> <span style="margin:0 6px;opacity:0.5">-</span> <span id="live-s2">${score2}</span>
-            </div>
-            <div class="sb-team" style="background: ${bg2}; color: ${color2};">
-                <div class="sb-team-name">${t2Short}</div>
-                <div class="sb-crest">${t2Crest}</div>
-            </div>
-        </div>
-        <div class="sb-live-badge">LIVE</div>
-    `;
-    sb.style.display = 'flex';
-}
-
-async function fetchLiveScore(fixId) {
+// Fetch Teams on Load
+window.onload = async () => {
     try {
-        const res = await fetch(`${PB_CONFIG.baseURL}/api/collections/fixtures/records/${fixId}?fields=live_score_t1,live_score_t2`, { cache: 'no-store' });
+        const res = await fetch(`${PB_URL}/api/collections/teams/records?perPage=50`, { cache: 'no-store' });
         if(res.ok) {
             const data = await res.json();
-            const s1El = document.getElementById('live-s1');
-            const s2El = document.getElementById('live-s2');
-            if(s1El && s2El) {
-                s1El.textContent = data.live_score_t1 || 0;
-                s2El.textContent = data.live_score_t2 || 0;
-            }
+            db_teams = data.items || [];
+            populateTeamsDropdown();
         }
     } catch(e) {
-        console.error("Failed to fetch live score", e);
+        console.error("Failed to load teams:", e);
     }
+};
+
+function populateTeamsDropdown() {
+    const select = document.getElementById('f-team');
+    db_teams.forEach(team => {
+        const teamName = team.name || team.crest_text || 'Unnamed Team';
+        const option = document.createElement('option');
+        option.value = team.id;
+        option.textContent = teamName;
+        select.appendChild(option);
+    });
 }
 
-function playLiveStream() {
-    const container = document.getElementById('video-container-box');
-    
-    // Inject Video Player and TV Overlay UI
-    let overlayHtml = `
-    <div class="tv-overlay" id="tv-overlay" style="display: block;">
-        <img src="https://i.postimg.cc/1tbYp88M/EFLTV.png" class="tv-logo" alt="EFL TV" crossorigin="anonymous">
-        <div class="tv-scoreboard" id="tv-scoreboard" style="display: none;">
-            <!-- Scoreboard injected dynamically -->
-        </div>
-    </div>`;
-
-    container.innerHTML = `<video id="main-video-player" controls class="video-player" autoplay playsinline></video>` + overlayHtml;
-    const videoElement = document.getElementById('main-video-player');
-    
-    // Dynamic PocketBase Connection for Live Scoreboard
-    const liveFix = db_fixtures.find(f => f.is_live === true || f.is_live === 'true');
-    if (liveFix) {
-        currentLiveFixtureId = liveFix.id;
-        renderScoreboardUI(liveFix);
-        // Start polling every 10 seconds for updated score
-        liveScoreInterval = setInterval(() => fetchLiveScore(liveFix.id), 10000);
-    }
-    
-    showModal('videoModal');
-    
-    const videoSrc = 'https://live.tmadhu.me/live/efls4/index.m3u8';
-    
-    if (typeof Hls !== 'undefined' && Hls.isSupported()) {
-        if(currentHls) { currentHls.destroy(); }
-        currentHls = new Hls();
-        currentHls.loadSource(videoSrc);
-        currentHls.attachMedia(videoElement);
-        currentHls.on(Hls.Events.MANIFEST_PARSED, function() {
-            videoElement.play().catch(e => console.log("Autoplay prevented", e));
-        });
-    } else if (videoElement.canPlayType('application/vnd.apple.mpegurl')) {
-        // Native HLS support (Safari)
-        videoElement.src = videoSrc;
-        videoElement.addEventListener('loadedmetadata', function() {
-            videoElement.play().catch(e => console.log("Autoplay prevented", e));
-        });
+function updateTeamSelection(selectEl) {
+    const val = selectEl.value;
+    if(val && val !== 'decide_later') {
+        selectedTeamData = db_teams.find(t => t.id === val);
     } else {
-        alert("দুঃখিত, আপনার ব্রাউজার HLS লাইভ স্ট্রিম সাপোর্ট করছে না।");
+        selectedTeamData = null;
     }
 }
 
-function playHighlight(url) {
-    const container = document.getElementById('video-container-box');
+// UI Interactions
+function toggleJerseySupport() {
+    const checkbox = document.getElementById('f-jersey-check');
+    const box = document.getElementById('jersey-box');
+    const details = document.getElementById('jersey-details');
+    const feeBadge = document.getElementById('fee-badge');
     
-    // Regular HTML5 Video Player for stored highlights (No Overlay)
-    container.innerHTML = `<video controls class="video-player" autoplay playsinline src="${url}"></video>`;
-    
-    showModal('videoModal');
+    // Toggle state if triggered by the box itself (not the checkbox directly)
+    if (event.target !== checkbox) {
+        checkbox.checked = !checkbox.checked;
+    }
+
+    if (checkbox.checked) {
+        box.classList.add('active');
+        details.style.display = 'block';
+        feeBadge.style.display = 'flex';
+    } else {
+        box.classList.remove('active');
+        details.style.display = 'none';
+        feeBadge.style.display = 'none';
+        // Reset fields
+        document.getElementById('f-team').value = "";
+        document.getElementById('f-size').value = "";
+        selectedTeamData = null;
+        clearErr(document.getElementById('f-team'));
+        clearErr(document.getElementById('f-size'));
+    }
 }
 
-function closeVideoModal(event) {
-    if (event && event.target !== document.getElementById('videoModal') && !event.target.classList.contains('modal-close')) return;
-    
-    // Cleanup HLS and Score Polling
-    if (typeof currentHls !== 'undefined' && currentHls) {
-        currentHls.destroy();
-        currentHls = null;
-    }
-    if (liveScoreInterval) {
-        clearInterval(liveScoreInterval);
-        liveScoreInterval = null;
-    }
-    
-    document.getElementById('video-container-box').innerHTML = ''; 
-    closeModal('videoModal');
-}
-
-// ==========================================
-// FORM SUBMISSION
-// ==========================================
-let isSubmitting = false; 
-
-async function submitForm() {
-  if (isSubmitting) return; 
-
-  document.getElementById('formErrorSummary').style.display = 'none';
+function switchPay(method) {
+  currentPayMethod = method;
+  document.getElementById('tab-mfs').classList.remove('active');
+  document.getElementById('tab-bank').classList.remove('active');
+  document.getElementById('box-mfs').style.display = 'none';
+  document.getElementById('box-bank').style.display = 'none';
   
+  document.getElementById(`tab-${method}`).classList.add('active');
+  document.getElementById(`box-${method}`).style.display = 'block';
+}
+
+function copyTxt(text, btn) {
+  if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(() => showCopied(btn));
+  } else {
+      let textArea = document.createElement("textarea");
+      textArea.value = text;
+      textArea.style.position = "fixed";
+      textArea.style.left = "-999999px";
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      try {
+          document.execCommand('copy');
+          showCopied(btn);
+      } catch (err) { console.error('Fallback copy failed', err); }
+      textArea.remove();
+  }
+}
+
+function showCopied(btn) {
+  const originalTxt = btn.innerText;
+  btn.innerText = 'Copied!';
+  btn.classList.add('copied');
+  setTimeout(() => {
+    btn.innerText = originalTxt;
+    btn.classList.remove('copied');
+  }, 2000);
+}
+
+function clearErr(el) {
+  el.classList.remove('input-error');
+  if(el.nextElementSibling && el.nextElementSibling.classList.contains('error-text')) {
+    el.nextElementSibling.style.display = 'none';
+  }
+  document.getElementById('photo-err').style.display = 'none';
+  document.getElementById('photo-box').classList.remove('input-error');
+}
+
+// Check Photo Size (Max 5MB)
+function handlePhoto(input) {
+  if (input.files && input.files[0]) {
+    const file = input.files[0];
+    const maxSizeInBytes = 5 * 1024 * 1024; // 5 MB limit
+    
+    if (file.size > maxSizeInBytes) {
+        alert("দুঃখিত, ছবির সাইজ ৫ এমবি (5MB) এর চেয়ে বড়। দয়া করে ছোট সাইজের ছবি সিলেক্ট করুন।");
+        input.value = ''; 
+        photoFile = null;
+        document.getElementById('photo-text').textContent = 'Click to upload profile photo';
+        document.getElementById('photo-icon').textContent = '📸';
+        return;
+    }
+    
+    photoFile = file;
+    document.getElementById('photo-text').textContent = '✓ ' + file.name;
+    document.getElementById('photo-icon').textContent = '✅';
+    clearErr(document.getElementById('photo-box'));
+  }
+}
+
+// Submit Logic
+async function submitDonation() {
+  // Gather Data
   const name = document.getElementById('f-name').value.trim();
   const batch = document.getElementById('f-batch').value.trim();
-  const pos = document.getElementById('f-pos').value;
-  const secPos = document.getElementById('f-sec-pos').value;
-  const availability = document.getElementById('f-availability').value; 
   const phone = document.getElementById('f-phone').value.trim();
-  const exp = document.getElementById('f-exp').value.trim();
-  const photoInput = document.getElementById('photoInput');
-  const agree = document.getElementById('f-agree').checked;
+  const message = document.getElementById('f-message').value.trim();
+  const trx = document.getElementById('f-trx').value.trim();
+  const consent = document.getElementById('f-consent').checked;
   
-  const payType = document.querySelector('.pay-opt.selected').getAttribute('data-type');
-  const trxId = payType === 'digital' ? document.getElementById('f-txn-digital').value.trim() : document.getElementById('f-txn-bank').value.trim();
+  const isJerseySupport = document.getElementById('f-jersey-check').checked;
+  const teamId = document.getElementById('f-team').value;
+  const jerseySize = document.getElementById('f-size').value;
   
-  if (!name || !batch || !pos || !availability || !phone || !trxId || photoInput.files.length === 0 || !agree) {
-    document.getElementById('formErrorSummary').style.display = 'block';
-    return;
+  // Validate
+  let hasErr = false;
+  if(!name) { document.getElementById('f-name').classList.add('input-error'); document.getElementById('f-name').nextElementSibling.style.display='block'; hasErr=true; }
+  if(!batch) { document.getElementById('f-batch').classList.add('input-error'); document.getElementById('f-batch').nextElementSibling.style.display='block'; hasErr=true; }
+  if(!phone) { document.getElementById('f-phone').classList.add('input-error'); document.getElementById('f-phone').nextElementSibling.style.display='block'; hasErr=true; }
+  if(!trx) { document.getElementById('f-trx').classList.add('input-error'); document.getElementById('f-trx').nextElementSibling.style.display='block'; hasErr=true; }
+  if(!photoFile) { document.getElementById('photo-box').classList.add('input-error'); document.getElementById('photo-err').style.display='block'; hasErr=true; }
+
+  if(isJerseySupport) {
+      if(!teamId) { document.getElementById('f-team').classList.add('input-error'); document.getElementById('f-team').nextElementSibling.style.display='block'; hasErr=true; }
+      if(!jerseySize) { document.getElementById('f-size').classList.add('input-error'); document.getElementById('f-size').nextElementSibling.style.display='block'; hasErr=true; }
   }
 
-  isSubmitting = true; 
-  const btn = document.querySelector('.submit-btn');
+  if(hasErr) return;
+
+  // UI Loading State
+  const btn = document.getElementById('submitBtn');
+  const loader = document.getElementById('btn-loader');
+  const btnText = document.getElementById('btn-text');
+  
   btn.disabled = true;
-  btn.style.pointerEvents = 'none'; 
-  btn.innerHTML = '<span class="ai-loader"></span> Uploading Data to Server...';
+  loader.style.display = 'block';
+  btnText.textContent = 'Processing...';
 
   try {
-      let baseName = name.toLowerCase().replace(/[^a-z0-9]/g, '');
-      if (baseName.length < 3) baseName = baseName.padEnd(3, 'x');
-      baseName = baseName.substring(0, 13);
-      let randomSuffix = Math.floor(10 + Math.random() * 90); 
-      let customId = baseName + randomSuffix;
-
+      // API Request
       const formData = new FormData();
-      formData.append('id', customId);
       formData.append('name', name);
       formData.append('batch', batch);
-      formData.append('position', pos);
-      formData.append('secondary_position', secPos);
-      formData.append('availability', availability);
       formData.append('phone', phone);
-      formData.append('experience', exp);
-      formData.append('payment_method', payType);
-      formData.append('trx_id', trxId);
-      formData.append('photo', photoInput.files[0]);
+      formData.append('message', message);
+      formData.append('payment_method', currentPayMethod);
+      formData.append('trx_id', trx);
+      formData.append('publish_consent', consent);
+      formData.append('photo', photoFile);
       
-      if (pos === 'Goalkeeper') {
-          formData.append('category', 'GK');
-          formData.append('Catagory', 'GK'); 
+      // NEW JERSEY FIELDS
+      formData.append('wants_jersey', isJerseySupport);
+      if(isJerseySupport) {
+          if(teamId !== 'decide_later') {
+              formData.append('supported_team', teamId);
+          } else {
+              formData.append('supported_team', 'TBD (Will decide later)'); // Fallback text if Relation field allows it, otherwise skip relation.
+          }
+          formData.append('jersey_size', jerseySize);
       }
 
-      const recordRes = await fetch(`${PB_CONFIG.baseURL}/api/collections/players/records`, {
+      const res = await fetch(`${PB_URL}/api/collections/supporters/records`, {
           method: 'POST',
           body: formData
       });
 
-      if (!recordRes.ok) {
-          const errBody = await recordRes.text();
-          console.error("PocketBase Error Log:", errBody);
-          throw new Error("Database insert failed. Check your API Rules.");
-      }
+      if (!res.ok) throw new Error("Server error.");
 
+      // Success State
+      document.getElementById('main-form-card').style.display = 'none';
+      document.getElementById('success-screen').style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      // Generate Card
       document.getElementById('card-name').textContent = name;
-      document.getElementById('card-pos').textContent = pos;
       document.getElementById('card-batch').textContent = batch;
       
-      document.getElementById('regForm').style.display = 'none';
-      document.getElementById('successBox').style.display = 'block';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      // Add Team Badge to Card if a specific team was selected
+      const teamBadge = document.getElementById('card-team-badge');
+      if (isJerseySupport && selectedTeamData) {
+          const logoUrl = selectedTeamData.banner ? `${PB_URL}/api/files/${selectedTeamData.collectionId}/${selectedTeamData.id}/${selectedTeamData.banner}` : 'https://via.placeholder.com/150';
+          document.getElementById('card-team-logo').src = logoUrl;
+          document.getElementById('card-team-name').textContent = selectedTeamData.short_name || selectedTeamData.name || selectedTeamData.crest_text;
+          teamBadge.style.display = 'flex';
+      } else {
+          teamBadge.style.display = 'none';
+      }
       
-      fetchPBData(); 
-
       const reader = new FileReader();
       reader.onload = function(e) {
           document.getElementById('card-photo').src = e.target.result;
+          
           setTimeout(() => { 
-            html2canvas(document.getElementById('player-card'), { scale: 3, useCORS: true, backgroundColor: null })
+            const cardEl = document.getElementById('export-card');
+            cardEl.parentElement.style.top = "0";
+            cardEl.parentElement.style.zIndex = "-1";
+            
+            html2canvas(cardEl, { scale: 2, useCORS: true, backgroundColor: null })
             .then(canvas => {
               const link = document.createElement('a');
-              link.download = `EFL_S4_${name.replace(/\s+/g, '_')}_Card.png`;
+              link.download = `EFL_S4_Supporter_${name.replace(/\s+/g, '_')}.png`;
               link.href = canvas.toDataURL('image/png');
               link.click(); 
-            }).catch(e => console.error("ID Card Generation failed:", e));
+              cardEl.parentElement.style.top = "-10000px";
+            }).catch(e => console.error("Card Generation failed:", e));
           }, 300);
       };
-      reader.readAsDataURL(photoInput.files[0]);
+      reader.readAsDataURL(photoFile);
 
-  } catch (error) {
-      console.error("Submission Error: ", error);
-      alert("Sorry, there was an error saving the data. Error: " + error.message);
-  } finally {
-      isSubmitting = false; 
+  } catch (err) {
+      console.error(err);
+      alert("দুঃখিত, তথ্য সেভ করতে সমস্যা হয়েছে। দয়া করে আবার চেষ্টা করুন।");
       btn.disabled = false;
-      btn.style.pointerEvents = 'auto';
-      btn.innerHTML = 'Submit Registration';
+      loader.style.display = 'none';
+      btnText.textContent = 'Submit Details';
   }
 }
-
-function showPage(id, btn) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  const targetPage = document.getElementById('page-' + id);
-  if (targetPage) targetPage.classList.add('active');
-  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-  if (btn) btn.classList.add('active');
-  else {
-    const activeNav = document.querySelector(`.nav-btn[onclick*="'${id}'"]`);
-    if (activeNav) activeNav.classList.add('active');
-  }
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-  setTimeout(observeElements, 100);
-}
-
-function selectPay(el, type) {
-  document.querySelectorAll('.pay-opt').forEach(o => o.classList.remove('selected'));
-  el.classList.add('selected');
-  document.getElementById('digitalInfo').style.display = (type === 'digital') ? 'block' : 'none';
-  document.getElementById('bankInfo').style.display = (type === 'bank') ? 'block' : 'none';
-}
-
-function handlePhoto(input) {
-  if (input.files && input.files[0]) {
-    document.getElementById('photoText').textContent = '✓ ' + input.files[0].name;
-    document.getElementById('photoIcon').textContent = '✅';
-  }
-}
-
-function removeError(el) { el.classList.remove('input-error'); document.getElementById('formErrorSummary').style.display = 'none'; }
-function removeCheckboxError() { document.getElementById('formErrorSummary').style.display = 'none'; }
-
-function resetForm() {
-  document.getElementById('regForm').reset();
-  document.getElementById('regForm').style.display = 'flex';
-  document.getElementById('successBox').style.display = 'none';
-  document.getElementById('photoText').textContent = 'Click to upload your photo';
-  document.getElementById('photoIcon').textContent = '📷';
-  selectPay(document.querySelector('.pay-opt[data-type="digital"]'), 'digital');
-}
-
 </script>
 </body>
 </html>
